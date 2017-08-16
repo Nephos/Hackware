@@ -11,21 +11,21 @@ class Core::Activity
     hooks: Hash(String, Hook),
   )
 
-  def start
-    exec "before_start"
-    exec "start"
-    exec "after_start"
+  def start(mods)
+    exec "before_start", mods
+    exec "start", mods
+    exec "after_start", mods
   end
 
-  def install
-    exec "before_install"
-    exec "install"
-    exec "after_install"
+  def install(mods)
+    exec "before_install", mods
+    exec "install", mods
+    exec "after_install", mods
   end
 
   # :nodoc:
-  private def exec(hook : String)
+  private def exec(hook : String, mods : Mods)
     hook = (self.hooks[hook]?)
-    hook.exec self unless hook.nil?
+    hook.exec(mods) self unless hook.nil?
   end
 end

@@ -4,6 +4,6 @@ class Hook
     function: String,
   )
 
-  def exec(context)
+  def exec(context, mods)
   end
 end
