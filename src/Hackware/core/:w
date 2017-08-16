@@ -1,0 +1,10 @@
+class Hook
+  YAML.mapping(
+    before_install: String,
+    after_install: String,
+    install: String,
+    before_start: String,
+    start: String,
+    after_start: String
+  )
+end

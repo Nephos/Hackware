@@ -1,4 +1,4 @@
-class Requirement
+class Core::Requirement
   # `type`.operator(*value)
   #
   # Example (self = Component):

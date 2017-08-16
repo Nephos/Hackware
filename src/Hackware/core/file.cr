@@ -1,4 +1,4 @@
-class File
+class Core::File
   YAML.mapping(
     path: String,
     content: String,

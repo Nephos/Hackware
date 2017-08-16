@@ -1,6 +1,6 @@
 require "./requirement"
 
-class Component
+class Core::Component
   YAML.mapping(
     name: String,
     attributes: Hash(String, Float64),

@@ -1,4 +1,4 @@
 require "./person"
 
-class Hacker < Person
+class Core::Hacker < Core::Person
 end

@@ -1,4 +1,4 @@
-class Skill
+class Core::Skill
   YAML.mapping(
     name: String,
     xp: Float32,

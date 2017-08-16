@@ -1,6 +1,6 @@
 require "./component"
 
-class Machine
+class Core::Machine
   YAML.mapping(
     name: String,
     type: String,
