@@ -1,5 +1,5 @@
 class Core::Skill
-  YAML.mapping(
+  JSON.mapping(
     name: String,
     xp: Float32,
     level: UInt32,

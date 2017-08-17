@@ -6,5 +6,6 @@ class Core::Machine
     type: String,
     components: Hash(String, Component?),
     attributes: Hash(String, Float64),
+    id: UInt32,
   )
 end
