@@ -11,6 +11,7 @@ class Core::File::InstanceJSON
 end
 
 class Core::File::Instance < Core::File::InstanceJSON
+  # include Core::Instance
   def initialize(jpp : JSON::PullParser)
     super(jpp)
   end

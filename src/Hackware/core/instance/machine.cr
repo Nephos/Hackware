@@ -8,6 +8,7 @@ class Core::InstanceJSON::Machine
 end
 
 class Core::Instance::Machine < Core::InstanceJSON::Machine
+  # include Core::Instance
   def initialize(jpp : JSON::PullParser)
     super(jpp)
   end

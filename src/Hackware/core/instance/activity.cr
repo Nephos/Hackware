@@ -8,6 +8,7 @@ class Core::InstanceJSON::Activity
 end
 
 class Core::Instance::Activity < Core::InstanceJSON::Activity
+  include Core::Instance
   getter model_ref : Activity
 
   def initialize(jpp : JSON::PullParser, models : Array(Core::InstanceJSON::Activity))

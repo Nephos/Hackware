@@ -8,6 +8,7 @@ class Core::InstanceJSON::Component
 end
 
 class Core::Instance::Component < Core::InstanceJSON::Component
+  include Core::Instance
   getter model_ref : Component
 
   def initialize(jpp : JSON::PullParser)
