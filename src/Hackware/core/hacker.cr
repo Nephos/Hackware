@@ -3,7 +3,9 @@ require "./skill"
 
 class Core::Hacker < Core::Person
   # Skill value = Float64
-  getter skills : Hash(Skill, Float64)
+  JSON.mapping(
+    skills: Hash(Skill, Float64),
+  )
 
   def level
     skill.floor
