@@ -1,2 +1,1 @@
-require "json"
 require "./core/*"

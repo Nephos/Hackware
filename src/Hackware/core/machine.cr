@@ -4,7 +4,7 @@ class Core::Machine
   JSON.mapping(
     name: String,
     type: String,
-    components: Hash(String, Component?),
+    slots: Array(String),
     attributes: Hash(String, Float64),
     id: UInt32,
   )
