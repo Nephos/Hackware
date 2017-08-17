@@ -1,9 +1,10 @@
 class Hook
   YAML.mapping(
-    name: String,
     function: String,
+    mod: String,
   )
 
-  def exec(context, mods)
+  def exec(context, mods, *args)             # TODO improve context (player, machine target, ...)
+    mods.sandbox.eval "#{mod}.#{function}()" # TODO add args
   end
 end
