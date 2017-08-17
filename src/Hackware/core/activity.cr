@@ -3,7 +3,7 @@ require "./hook"
 # An activity is executed by a `Hacker`.
 # The hooks are linked to the mod logic (install, start)
 class Core::Activity
-  YAML.mapping(
+  JSON.mapping(
     # Name of the activity to display. Also unique.
     name: String,
     # Base duration of the activity. TODO improve this definition

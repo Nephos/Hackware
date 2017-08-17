@@ -1,5 +1,5 @@
 class Hook
-  YAML.mapping(
+  JSON.mapping(
     function: String,
     mod: String,
   )

@@ -1,5 +1,5 @@
 class Core::Skill
-  YAML.mapping(
+  JSON.mapping(
     name: String,
   )
 end
