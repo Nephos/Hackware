@@ -1,6 +1,6 @@
 # An activity is executed by a `Hacker`.
 # The hooks are linked to the mod logic (install, start)
-class Core::Activity
+class Core::Model::Activity
   JSON.mapping(
     # Name of the activity to display. Also unique.
     name: String,

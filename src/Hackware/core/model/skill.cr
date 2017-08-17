@@ -1,4 +1,4 @@
-class Core::Skill
+class Core::Model::Skill
   JSON.mapping(
     name: String,
   )

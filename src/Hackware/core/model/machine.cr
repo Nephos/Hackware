@@ -1,6 +1,6 @@
 require "./component"
 
-class Core::Machine
+class Core::Model::Machine
   JSON.mapping(
     name: String,
     type: String,

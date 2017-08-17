@@ -1,4 +1,4 @@
-class Core::File::InstanceJSON < Core::Instance
+class Core::File::InstanceJSON < Core::InstanceJSON
   JSON.mapping(
     id: UInt32,
     # if no model, its a generic file not created by the game

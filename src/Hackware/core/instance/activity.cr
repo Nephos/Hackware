@@ -1,4 +1,4 @@
-class Core::Activity::InstanceJSON < Core::Instance
+class Core::InstanceJSON::Activity < Core::InstanceJSON
   JSON.mapping(
     id: UInt32,
     model: String,
@@ -6,10 +6,10 @@ class Core::Activity::InstanceJSON < Core::Instance
   )
 end
 
-class Core::Activity::Instance < Core::Activity::InstanceJSON
+class Core::Instance::Activity < Core::InstanceJSON::Activity
   getter model_ref : Activity
 
-  def initialize(jpp : JSON::PullParser, models : Array(Core::Activity))
+  def initialize(jpp : JSON::PullParser, models : Array(Core::InstanceJSON::Activity))
     super(jpp)
     @model_ref = models.find { |current_model| @model == current_model.name }
   end

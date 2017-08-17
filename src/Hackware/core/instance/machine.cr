@@ -1,4 +1,4 @@
-class Core::Machine::InstanceJSON < Core::Instance
+class Core::InstanceJSON::Machine < Core::InstanceJSON
   JSON.mapping(
     id: UInt32,
     model: String,
@@ -6,7 +6,7 @@ class Core::Machine::InstanceJSON < Core::Instance
   )
 end
 
-class Core::Machine::Instance < Core::Machine::InstanceJSON
+class Core::Instance::Machine < Core::InstanceJSON::Machine
   def initialize(jpp : JSON::PullParser)
     super(jpp)
   end

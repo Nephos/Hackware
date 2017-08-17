@@ -1,4 +1,4 @@
-class Core::File
+class Core::Model::File
   JSON.mapping(
     name: String,
     content: String,

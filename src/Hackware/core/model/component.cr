@@ -1,4 +1,4 @@
-class Core::Component
+class Core::Model::Component
   JSON.mapping(
     name: String,
     attributes: Hash(String, Float64),
