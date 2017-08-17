@@ -1,4 +1,4 @@
-class Core::File::InstanceJSON < Core::InstanceJSON
+class Core::InstanceJSON:File < Core::InstanceJSON
   JSON.mapping(
     id: UInt32,
     # if no model, its a generic file not created by the game
@@ -9,7 +9,7 @@ class Core::File::InstanceJSON < Core::InstanceJSON
   )
 end
 
-class Core::File::Instance < Core::File::InstanceJSON
+class Core::Instance::File < Core::InstanceJSON::File
   def initialize(jpp : JSON::PullParser)
     super(jpp)
   end
