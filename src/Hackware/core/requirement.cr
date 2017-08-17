@@ -6,7 +6,7 @@ class Core::Requirement
   # Example (self = Skill)
   #   {type: "self.player.skills", operator: ">=", "hacking, 3" }
   YAML.mapping(
-    name: String,
+    name: String?,
     type: String,
     operator: String,
     value: String,

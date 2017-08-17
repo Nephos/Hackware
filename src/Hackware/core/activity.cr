@@ -4,28 +4,31 @@ require "./hook"
 # The hooks are linked to the mod logic (install, start)
 class Core::Activity
   YAML.mapping(
+    # Name of the activity to display. Also unique.
     name: String,
+    # Base duration of the activity. TODO improve this definition
     duration: Int32,
+    # Requirements to execute this task.
     requirements: Array(Requirement),
+    # Usage of the machine during the execution of the activity.
     attributes_usage: Hash(String, Float64),
+    # Scripts.
     hooks: Hash(String, Hook),
   )
 
-  def start(mods)
-    exec "before_start", mods
-    exec "start", mods
-    exec "after_start", mods
-  end
-
-  def install(mods)
-    exec "before_install", mods
-    exec "install", mods
-    exec "after_install", mods
-  end
-
-  # :nodoc:
-  private def exec(hook : String, mods : Mods)
+  # Execute a hook.
+  #
+  # - hook: The name of the hook to execute.
+  # - mods: The sandbox where the mods are loaded.
+  #
+  # Example
+  # ```
+  # activity.exec "before_install", mods
+  # activity.exec "install", mods
+  # activity.exec "after_install", mods
+  # ```
+  def exec(hook : String, mods : Mods) # TODO improve context (player, machine, target, ...)
     hook = (self.hooks[hook]?)
-    hook.exec(mods) self unless hook.nil?
+    hook.exec(mods, self) unless hook.nil?
   end
 end
