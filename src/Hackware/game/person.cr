@@ -1,10 +1,10 @@
-class Core::Person
+class Game::Person
   JSON.mapping(
     # Skill value = Float64.
-    skills: Hash(Skill, Float64),
+    skills: Array(Core::Skill::Instance),
     # Machines owned.
-    machines: Array(Machine),
+    machines: Array(Core::Machine::Instance),
     # Inventory of components.
-    inventory_components: Array(Component),
+    inventory_components: Array(Core::Component::Instance),
   )
 end

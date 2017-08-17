@@ -1,4 +1,4 @@
 require "./hacker"
 
-class Core::Player < Core::Hacker
+class Game::Player < Game::Hacker
 end

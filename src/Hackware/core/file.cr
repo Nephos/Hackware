@@ -1,8 +1,7 @@
 class Core::File
   JSON.mapping(
-    path: String,
+    name: String,
     content: String,
-    permissions: Int32,
     type: String,
   )
 end

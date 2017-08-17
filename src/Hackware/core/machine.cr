@@ -6,6 +6,5 @@ class Core::Machine
     type: String,
     slots: Array(String),
     attributes: Hash(String, Float64),
-    id: UInt32,
   )
 end
