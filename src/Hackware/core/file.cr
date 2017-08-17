@@ -1,5 +1,5 @@
 class Core::File
-  YAML.mapping(
+  JSON.mapping(
     path: String,
     content: String,
     permissions: Int32,

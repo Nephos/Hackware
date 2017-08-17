@@ -3,7 +3,7 @@ require "./hook"
 # An activity is executed by a `Hacker`.
 # The hooks are linked to the mod logic (install, start)
 class Core::Activity
-  YAML.mapping(
+  JSON.mapping(
     name: String,
     duration: Int32,
     requirements: Array(Requirement),
@@ -26,6 +26,6 @@ class Core::Activity
   # :nodoc:
   private def exec(hook : String, mods : Mods)
     hook = (self.hooks[hook]?)
-    hook.exec(mods) self unless hook.nil?
+    hook.exec(mods, self) unless hook.nil?
   end
 end

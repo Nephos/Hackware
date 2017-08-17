@@ -1,2 +1,2 @@
-require "yaml"
+require "json"
 require "./core/*"
