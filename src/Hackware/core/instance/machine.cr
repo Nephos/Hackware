@@ -1,4 +1,5 @@
-class Core::InstanceJSON::Machine < Core::InstanceJSON
+class Core::InstanceJSON::Machine
+  include Core::InstanceJSON
   JSON.mapping(
     id: UInt32,
     model: String,

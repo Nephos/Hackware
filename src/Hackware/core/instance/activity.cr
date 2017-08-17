@@ -1,4 +1,5 @@
-class Core::InstanceJSON::Activity < Core::InstanceJSON
+class Core::InstanceJSON::Activity
+  include Core::InstanceJSON
   JSON.mapping(
     id: UInt32,
     model: String,
