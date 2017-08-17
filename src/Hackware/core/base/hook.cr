@@ -4,7 +4,7 @@ class Hook
     mod: String,
   )
 
-  def exec(context, mods, *args)             # TODO improve context (player, machine target, ...)
-    mods.sandbox.eval "#{mod}.#{function}()" # TODO add args
+  def exec(context : Core::Instance, mods, *args)             # TODO improve context (player, machine target, ...)
+    mods.sandbox.eval "#{mod}.#{function}(#{context.id})" # TODO add args
   end
 end

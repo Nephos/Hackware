@@ -11,4 +11,9 @@ class Core::Requirement
     operator: String,
     value: Array(String),
   )
+
+  # TODO
+  def exec(context) : Bool
+    false
+  end
 end
