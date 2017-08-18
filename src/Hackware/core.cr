@@ -1,7 +1,7 @@
 require "./core/base"
 require "./core/instance_json"
 require "./core/instance"
-require "./core/models"
+require "./core/model"
 
 # The base objects are not extensibles with mods.
 # They are requirements, hooks, ...
