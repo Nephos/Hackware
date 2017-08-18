@@ -10,7 +10,7 @@ end
 class Core::Instance::Activity < Core::InstanceJSON::Activity
   include Core::Instance
   extend Core::Instance::FromJSON
-  getter model_ref : Activity
+  getter model_ref : Core::Model::Activity
 
   # Execute a hook.
   #
