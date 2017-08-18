@@ -8,9 +8,7 @@ class Core::InstanceJSON::Machine
 end
 
 class Core::Instance::Machine < Core::InstanceJSON::Machine
-  # include Core::Instance
-  # extend Core::Instance::FromJSON
-  def initialize(jpp : JSON::PullParser)
-    super(jpp)
-  end
+  include Core::Instance
+  extend Core::Instance::FromJSON
+  getter model_ref : Core::Model::Machine
 end

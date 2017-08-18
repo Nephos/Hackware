@@ -9,9 +9,7 @@ class Core::InstanceJSON::Skill
 end
 
 class Core::Instance::Skill < Core::InstanceJSON::Skill
-  # include Core::Instance
-  # extend Core::Instance::FromJSON
-  def initialize(jpp : JSON::PullParser)
-    super(jpp)
-  end
+  include Core::Instance
+  extend Core::Instance::FromJSON
+  getter model_ref : Core::Model::Skill
 end
