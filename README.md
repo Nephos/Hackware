@@ -2,6 +2,12 @@
 
 TODO: Write a description here
 
+## Github informations
+
+We prefere to work on our private server <https://git.nephos.xyz/Hackware/Hackware>.
+Much like github, free registration, etc.
+Still, you can also open a issue / pull request on github, but it might be slower to process.
+
 ## Installation
 
 TODO: Write installation instructions here
@@ -12,7 +18,9 @@ TODO: Write usage instructions here
 
 ## Development
 
-TODO: Write development instructions here
+You are a modder ? You may want to read the wiki.
+You are a developer ? You might also want to do so.
+The wiki is available at this address: <https://git.nephos.xyz/Hackware/Hackware/wiki>
 
 ## Contributing
 
