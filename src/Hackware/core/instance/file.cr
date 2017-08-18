@@ -12,7 +12,7 @@ end
 
 class Core::Instance::File < Core::InstanceJSON::File
   # include Core::Instance
-  # extend Core::Instance::FromJson
+  # extend Core::Instance::FromJSON
   def initialize(jpp : JSON::PullParser)
     super(jpp)
   end

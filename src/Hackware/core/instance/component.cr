@@ -9,6 +9,6 @@ end
 
 class Core::Instance::Component < Core::InstanceJSON::Component
   include Core::Instance
-  extend Core::Instance::FromJson
+  extend Core::Instance::FromJSON
   getter model_ref : Core::Model::Component
 end

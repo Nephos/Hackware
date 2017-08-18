@@ -6,7 +6,7 @@ module Core::Instance
   # abstract def initialize(jpp : JSON::PullParser, models : Array(Core::Model))
 end
 
-module Core::Instance::FromJson
+module Core::Instance::FromJSON
   def from_json(io_or_string, models : Array(Core::Model))
     parser = JSON::PullParser.new io_or_string
     new parser, models
