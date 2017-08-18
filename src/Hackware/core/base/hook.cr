@@ -4,7 +4,11 @@ class Core::Hook
     mod: String,
   )
 
-  def exec(context : Core::Instance, mods, *args)         # TODO improve context (player, machine target, ...)
+  alias Atom = Int64 | Float64 | String | Nil
+  alias Comp = Array(Comp) | Hash(Comp, Comp) | Atom
+
+  def exec(mods, context : Core::Instance, *args : Comp)
+    js_args = args.map{|e| e.inspect }
     mods.sandbox.eval "#{mod}.#{function}(#{context.id})" # TODO add args
   end
 end

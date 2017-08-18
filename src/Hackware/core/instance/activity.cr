@@ -25,6 +25,6 @@ class Core::Instance::Activity < Core::InstanceJSON::Activity
   # ```
   def exec(hook : String, mods : Mods) # TODO improve context (player, machine, target, ...)
     hook = (activity.hooks[hook]?)
-    hook.exec(self, mods) unless hook.nil?
+    hook.exec(mods, self) unless hook.nil?
   end
 end
