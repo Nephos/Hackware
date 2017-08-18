@@ -9,12 +9,8 @@ end
 
 class Core::Instance::Activity < Core::InstanceJSON::Activity
   include Core::Instance
+  extend Core::Instance::FromJson
   getter model_ref : Activity
-
-  def initialize(jpp : JSON::PullParser, models : Array(Core::Model))
-    super(jpp)
-    @model_ref = models.find { |current_model| @model == current_model.name }
-  end
 
   # Execute a hook.
   #

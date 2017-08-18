@@ -10,6 +10,7 @@ end
 
 class Core::Instance::Skill < Core::InstanceJSON::Skill
   # include Core::Instance
+  # extend Core::Instance::FromJson
   def initialize(jpp : JSON::PullParser)
     super(jpp)
   end

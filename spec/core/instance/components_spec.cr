@@ -21,5 +21,4 @@ describe Core::Instance::Component do
     componentNoMachineJson.model.should eq "graphic card"
     componentNoMachineJson.machine_name.should eq "computer"
   end
-
 end
