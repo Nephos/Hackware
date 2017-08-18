@@ -1,5 +1,5 @@
 describe Core::Model::Component do
-  it "basic test" do
+  it "test no requirement" do
     component = Core::Model::Component.from_json(%({"name": "graphic card", "attributes": {"comp_speed": 3}, "slots": ["graphic"], "requirements": []}))
     component.name.should eq "graphic card"
     component.attributes["comp_speed"].should eq 3.0
