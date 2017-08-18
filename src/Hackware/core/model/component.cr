@@ -1,4 +1,5 @@
 class Core::Model::Component
+  include Core::Model
   JSON.mapping(
     name: String,
     attributes: Hash(String, Float64),
