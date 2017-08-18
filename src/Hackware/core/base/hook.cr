@@ -8,7 +8,7 @@ class Core::Hook
   alias Comp = Array(Comp) | Hash(Comp, Comp) | Atom
 
   def exec(mods, context : Core::Instance, *args : Comp)
-    js_args = args.map{|e| e.inspect }
-    mods.sandbox.eval "#{mod}.#{function}(#{context.id})" # TODO add args
+    js_args = args.map{|e| e.inspect }.join(", ")
+    mods.sandbox.eval "#{mod}.#{function}(#{context.id}, #{js_args})"
   end
 end
