@@ -5,5 +5,7 @@ class Core::Model::Component
     attributes: Hash(String, Float64),
     slots: Array(String),
     requirements: Array(Requirement),
+    # install, uninstall
+    hooks: Hash(String, Hook),
   )
 end
