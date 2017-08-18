@@ -1,4 +1,5 @@
-class Core::InstanceJSON::Component < Core::InstanceJSON
+class Core::InstanceJSON::Component
+  include Core::InstanceJSON
   JSON.mapping(
     id: UInt32,
     model: String,
@@ -7,9 +8,10 @@ class Core::InstanceJSON::Component < Core::InstanceJSON
 end
 
 class Core::Instance::Component < Core::InstanceJSON::Component
-  getter model_ref : Component
+  include Core::Instance
+  getter model_ref : Core::Model::Component
 
-  def initialize(jpp : JSON::PullParser)
+  def initialize(jpp : JSON::PullParser, models : Array(Core::Model::Component))
     super(jpp)
     @model_ref = models.find { |current_model| @model == current_model.name }
   end
