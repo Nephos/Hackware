@@ -25,7 +25,7 @@ class Core::Item::Component < Core::ItemJSON::Component
     "owner",
   )
 
-  def termine(operator : String, values : Array(String)) : Bool
+  def termine(operator : String, values : Array(String)) : Core::Terminal::Comp
     false
   end
 end

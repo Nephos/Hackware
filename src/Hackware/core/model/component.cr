@@ -8,4 +8,8 @@ class Core::Model::Component
     # install, uninstall
     hooks: Hash(String, Hook),
   )
+
+  def termine(operator : String, values : Array(String)) : Comp
+    false
+  end
 end

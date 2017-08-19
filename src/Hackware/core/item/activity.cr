@@ -36,7 +36,7 @@ class Core::Item::Activity < Core::ItemJSON::Activity
     "owner",
   )
 
-  def termine(operator : String, values : Array(String)) : Bool
+  def termine(operator : String, values : Array(String)) : Core::Terminal::Comp
     false
   end
 end

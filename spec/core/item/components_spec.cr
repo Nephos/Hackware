@@ -7,13 +7,15 @@ describe Core::Item::Component do
     componentNoMachineJson.model.should eq "graphic card"
     componentNoMachineJson.machine_name.should eq nil
 
-    componentNoMachine = Core::Item::Component.from_json(%({"id": 0, "uid": 0, "model": "graphic card"}), [componentModel], Game::Person.new(0))
+    owner = Game::Person.new(0)
+    componentNoMachine = Core::Item::Component.from_json(%({"id": 0, "uid": 0, "model": "graphic card"}), [componentModel], owner)
     componentNoMachine.id.should eq 0
     componentNoMachine.model.should eq "graphic card"
     componentNoMachine.model_ref.name.should eq "graphic card"
     componentNoMachine.model_ref.should be componentModel
     componentNoMachine.model_ref.attributes["comp_speed"].should eq 3.0
     componentNoMachine.model_ref.requirements.should eq [] of Core::Requirement
+    componentNoMachine.owner.should be owner
   end
 
   it "test with machine" do

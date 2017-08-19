@@ -8,11 +8,13 @@ describe Core::Item::Activity do
       "hooks": {"install": {"mod": "DDOS", "function": "activity DDOS with ping"}},
       "requirements": []
     }))
+    owner = Game::Person.new(0)
 
-    activity = Core::Item::Activity.from_json(%({ "id": 0, "model": "DDOS with ping", "completion": 0.0 }), [activity_model], Game::Person.new(0))
+    activity = Core::Item::Activity.from_json(%({ "id": 0, "model": "DDOS with ping", "completion": 0.0 }), [activity_model], owner)
     activity.id.should eq 0
     activity.model.should eq "DDOS with ping"
     activity.completion.should eq 0.0
     activity.model_ref.should be activity_model
+    activity.owner.should be owner
   end
 end

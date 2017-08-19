@@ -20,7 +20,7 @@ class Core::Item::Machine < Core::ItemJSON::Machine
     "owner",
   )
 
-  def termine(operator : String, values : Array(String)) : Bool
+  def termine(operator : String, values : Array(String)) : Core::Terminal::Comp
     false
   end
 end

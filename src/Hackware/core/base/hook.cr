@@ -4,7 +4,7 @@ class Core::Hook
     mod: String,
   )
 
-  alias Atom = Int64 | Float64 | String | Nil
+  alias Atom = Int64 | Float64 | String | Bool | Nil
   alias Comp = Array(Comp) | Hash(Comp, Comp) | Atom
 
   def exec(mods, context : Core::Item, *args : Comp)

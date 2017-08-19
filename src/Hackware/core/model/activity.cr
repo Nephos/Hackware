@@ -14,4 +14,8 @@ class Core::Model::Activity
     # Scripts.
     hooks: Hash(String, Hook),
   )
+
+  def termine(operator : String, values : Array(String)) : Comp
+    false
+  end
 end

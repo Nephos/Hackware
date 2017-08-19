@@ -3,4 +3,8 @@ class Core::Model::Skill
   JSON.mapping(
     name: String,
   )
+
+  def termine(operator : String, values : Array(String)) : Comp
+    false
+  end
 end

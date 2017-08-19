@@ -8,4 +8,8 @@ class Core::Model::Machine
     slots: Array(String),
     attributes: Hash(String, Float64),
   )
+
+  def termine(operator : String, values : Array(String)) : Comp
+    false
+  end
 end

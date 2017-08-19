@@ -22,7 +22,7 @@ class Core::Item::File < Core::ItemJSON::File
     "owner",
   )
 
-  def termine(operator : String, values : Array(String)) : Bool
+  def termine(operator : String, values : Array(String)) : Core::Terminal::Comp
     false
   end
 end
