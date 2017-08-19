@@ -19,7 +19,11 @@ class Core::Item::Skill < Core::ItemJSON::Skill
 
   #############################################################################
 
-  Core::Terminal.__set_termine_operators(
+  # Core::Resolve.__set_operators(
+  #   "player",
+  # )
+
+  Core::Terminal.__set_operators(
     "level_greater",
     "level_greater_or_eq",
     "level_less",
@@ -32,9 +36,9 @@ class Core::Item::Skill < Core::ItemJSON::Skill
   end
 
   def termine(operator : String, values : Array(String)) : Bool
-    operator = TERMINE[operator]?
-    raise "error" if operator.nil?
-    operator.call(self, values)
+    operator_fct = Core::Terminal.__get_operator(operator)
+    raise %(No operator "#{operator}" in (#{self.class})) if operator_fct.nil?
+    operator_fct.call(self, values)
   end
 
   def level_greater(args)
@@ -66,5 +70,4 @@ class Core::Item::Skill < Core::ItemJSON::Skill
     arg = UInt32.new(args.first)
     return @level == arg
   end
-
 end
