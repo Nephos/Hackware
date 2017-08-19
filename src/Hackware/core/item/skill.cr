@@ -27,7 +27,7 @@ class Core::Item::Skill < Core::ItemJSON::Skill
     "level_less",
     "level_less_or_eq",
     "level_eq",
-    #"xp_is_max"
+    "xp_is_max"
   )
 
   # arguments:
