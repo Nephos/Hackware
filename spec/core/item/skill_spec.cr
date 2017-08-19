@@ -22,6 +22,8 @@ describe Core::Item::Skill do
     skill.level_less_or_eq(["0"]).should be_false
     skill.level_eq(["1"]).should be_true
     skill.level_eq(["0"]).should be_false
-    #skill.xp_is_max([] of String).should be_false
+    skill.xp_is_max([] of String).should be_false
+    expect_raises { skill.level_greater(["0", "too_many_args"]) }
+    expect_raises { skill.xp_is_max(["too_many_args"]) }
   end
 end

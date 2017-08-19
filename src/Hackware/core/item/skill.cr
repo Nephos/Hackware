@@ -27,7 +27,7 @@ class Core::Item::Skill < Core::ItemJSON::Skill
     "level_less",
     "level_less_or_eq",
     "level_eq",
-    #"xp_is_max",
+    #"xp_is_max"
   )
 
   # arguments:
@@ -69,8 +69,8 @@ class Core::Item::Skill < Core::ItemJSON::Skill
 
   # arguments:
   #  - level: UInt32
-  # def xp_is_max(values)
-  #   #__require_no_arguments("is_max", values)
-  #   return @xp >= 1.0
-  # end
+  def xp_is_max(values)
+    __require_no_arguments("is_max", values)
+    return @xp >= 1.0
+  end
 end
