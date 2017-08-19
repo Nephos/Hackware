@@ -38,12 +38,6 @@ class Game::Person
     self
   end
 
-  def termine(operator : String, values : Array(String)) : Bool
-    operator_fct = Core::Terminal.__get_operator(operator)
-    raise %(No terminal operator "#{operator}" in (#{self.class})) if operator_fct.nil?
-    operator_fct.call(self, values)
-  end
-
   def uid_eq(args)
     raise "Invalid requirement (uid_eq) with arguments (#{args})" if args.size != 1
     arg = UInt32.new(args.first)

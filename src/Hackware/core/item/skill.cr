@@ -31,18 +31,6 @@ class Core::Item::Skill < Core::ItemJSON::Skill
     "level_eq",
   )
 
-  def resolve(path : String) : Core::Resolvable
-    path_fct = Core::Resolvable.__get_path(fct)
-    raise %(No resolvable path "#{path}" in (#{self.class})) if path_fct.nil?
-    path_fct.call(self)
-  end
-
-  def termine(operator : String, values : Array(String)) : Bool
-    operator_fct = Core::Terminal.__get_operator(operator)
-    raise %(No terminal operator "#{operator}" in (#{self.class})) if operator_fct.nil?
-    operator_fct.call(self, values)
-  end
-
   def level_greater(args)
     raise "Invalid requirement (level_greater) with arguments (#{args})" if args.size != 1
     arg = UInt32.new(args.first)
