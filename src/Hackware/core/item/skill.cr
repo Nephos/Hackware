@@ -19,9 +19,9 @@ class Core::Item::Skill < Core::ItemJSON::Skill
 
   #############################################################################
 
-  # Core::Resolve.__set_operators(
-  #   "player",
-  # )
+  Core::Resolvable.__set_paths(
+    "owner",
+  )
 
   Core::Terminal.__set_operators(
     "level_greater",
@@ -31,13 +31,15 @@ class Core::Item::Skill < Core::ItemJSON::Skill
     "level_eq",
   )
 
-  def resolve(fct : String) : Core::Resolvable
-    self
+  def resolve(path : String) : Core::Resolvable
+    path_fct = Core::Resolvable.__get_path(fct)
+    raise %(No resolvable path "#{path}" in (#{self.class})) if path_fct.nil?
+    path_fct.call(self)
   end
 
   def termine(operator : String, values : Array(String)) : Bool
     operator_fct = Core::Terminal.__get_operator(operator)
-    raise %(No operator "#{operator}" in (#{self.class})) if operator_fct.nil?
+    raise %(No terminal operator "#{operator}" in (#{self.class})) if operator_fct.nil?
     operator_fct.call(self, values)
   end
 
