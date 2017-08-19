@@ -1,3 +1,5 @@
+require "spec"
+
 describe Core::Item::Component do
   it "test no machine" do
     person = Game::Person.from_json(%({"uid": 0, "skills": [], "machines": [], "inventory_components": []}))

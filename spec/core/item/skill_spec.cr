@@ -1,3 +1,5 @@
+require "spec"
+
 describe Core::Item::Skill do
   it "test simle item" do
     skill_model = Core::Model::Skill.from_json(%({ "name": "Programming" }))

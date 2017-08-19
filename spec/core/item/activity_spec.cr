@@ -1,3 +1,5 @@
+require "spec"
+
 describe Core::Item::Activity do
   it "test simle item" do
     activity_model = Core::Model::Activity.from_json(%(

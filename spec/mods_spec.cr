@@ -1,3 +1,4 @@
+require "spec"
 require "tempfile"
 
 describe Mods do

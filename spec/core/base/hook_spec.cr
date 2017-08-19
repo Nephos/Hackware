@@ -1,3 +1,5 @@
+require "spec"
+
 describe Core::Hook do
   it "basic exec" do
     hook = Core::Hook.from_json(%({ "function": "fct_test", "mod": "mod_test" }))
