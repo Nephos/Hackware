@@ -28,6 +28,6 @@ class Core::Item::Machine < Core::ItemJSON::Machine
   #   - name: String
   def name_is(values)
     args = __require_arguments("name_is", values, String)
-    return @name == args[0]
+    @name == args[0]
   end
 end

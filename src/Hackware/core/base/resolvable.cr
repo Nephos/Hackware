@@ -10,20 +10,20 @@ module Core::Resolvable
   macro __set_paths(*paths)
     RESOLVABLE_PATHS = {
       {% for op in paths %}
-        {{op}} => -> (resolvable : self.class) { resolvable.{{op.id}}() },
+        {{op}} => -> (resolvable : self) { resolvable.{{op.id}}() },
       {% end %}
     }
 
     # Read into the list of paths functions to call the right one.
     def resolve(path : String) : Core::Resolvable
-      path_fct = Core::Resolvable.__get_path(fct)
+      path_fct = RESOLVABLE_PATHS[path]?
       raise UnresolvablePath.new %(No resolvable path "#{path}" in (#{self.class})) if path_fct.nil?
       path_fct.call(self)
     end
   end
 
   macro __get_path(path)
-    RESOLVABLE_PATHS[path]?
+
   end
 
   # Resolve a complete path

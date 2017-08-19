@@ -33,6 +33,6 @@ class Core::Item::Component < Core::ItemJSON::Component
   #   - id: UInt32
   def is_attached_to(values)
     args = __require_arguments("is_attached_to", values, String)
-    return @machine_name == args[0]
+    @machine_name == args[0]
   end
 end

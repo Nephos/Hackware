@@ -43,6 +43,6 @@ class Core::Item::Activity < Core::ItemJSON::Activity
   # arguments: none
   def is_attached_to(values)
     __require_no_arguments("is_max", values)
-    return @completion >= 1.0
+    @completion >= 1.0
   end
 end

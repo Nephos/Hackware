@@ -31,18 +31,18 @@ class Core::Item::File < Core::ItemJSON::File
   # arguments: none
   def is_executable(values)
     __require_no_arguments("is_max", values)
-    return permissions.includes? "x"
+    permissions.includes? "x"
   end
 
   # arguments: none
   def is_writable(values)
     __require_no_arguments("is_max", values)
-    return permissions.includes? "w"
+    permissions.includes? "w"
   end
 
   # arguments: none
   def is_readable(values)
     __require_no_arguments("is_max", values)
-    return permissions.includes? "r"
+    permissions.includes? "r"
   end
 end

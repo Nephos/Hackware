@@ -12,20 +12,16 @@ module Core::Terminal
   macro __set_operators(*operators)
     TERMINE_OPERATORS = {
       {% for op in operators %}
-        {{op}} => -> (terminal : self.class, args : Array(String)) { terminal.{{op.id}}(args) },
+        {{op}} => -> (terminal : self, args : Array(String)) { terminal.{{op.id}}(args) },
       {% end %}
     }
 
     # Read into the list of operators functions to call the right one.
     def termine(operator : String, values : Array(String)) : Core::Terminal::Comp
-      operator_fct = Core::Terminal.__get_operator(operator)
+      operator_fct = TERMINE_OPERATORS[operator]?
       raise UndefinedOperator.new %(No terminal operator "#{operator}" in (#{self.class})) if operator_fct.nil?
       operator_fct.call(self, values)
     end
-  end
-
-  macro __get_operator(operator)
-    TERMINE_OPERATORS[operator]?
   end
 
   class UndefinedOperator < Exception
