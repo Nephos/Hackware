@@ -71,7 +71,6 @@ class Core::Item::Skill < Core::ItemJSON::Skill
   #  - level: UInt32
   def xp_is_max(values)
     __require_no_arguments("is_max", values)
-    nop = 1
     return @xp >= 1.0
   end
 end
