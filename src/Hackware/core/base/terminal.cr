@@ -14,7 +14,7 @@ module Core::Terminal
     }
 
     # Read into the list of operators functions to call the right one.
-    def termine(operator : String, values : Array(String)) : Bool
+    def termine(operator : String, values : Array(String))
       operator_fct = Core::Terminal.__get_operator(operator)
       raise UndefinedOperator.new %(No terminal operator "#{operator}" in (#{self.class})) if operator_fct.nil?
       operator_fct.call(self, values)

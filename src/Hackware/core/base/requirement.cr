@@ -16,7 +16,7 @@ class Core::Requirement
   # TODO
   # def exec(context : Core::Item) : Bool
   def resolve_value(context : Core::Traversable) : Bool
-    resolve_path(context).termine(self.operator, self.values)
+    !!resolve_path(context).termine(self.operator, self.values)
   end
 
   def resolve_path(context : Core::Resolvable) : Core::Resolvable
