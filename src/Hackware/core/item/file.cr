@@ -1,6 +1,6 @@
-class Core::InstanceJSON::File
+class Core::ItemJSON::File
   alias Id = UInt32
-  include Core::InstanceJSON
+  include Core::ItemJSON
   JSON.mapping(
     id: Id,
     # if no model, its a generic file not created by the game
@@ -10,9 +10,9 @@ class Core::InstanceJSON::File
   )
 end
 
-class Core::Instance::File < Core::InstanceJSON::File
-  include Core::Instance
-  extend Core::Instance::FromJSON
+class Core::Item::File < Core::ItemJSON::File
+  include Core::Item
+  extend Core::Item::FromJSON
   getter model_ref : Core::Model::File
   getter owner : Game::Person
 end

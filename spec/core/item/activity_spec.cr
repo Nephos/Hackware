@@ -1,5 +1,5 @@
-describe Core::Instance::Activity do
-  it "test simle instance" do
+describe Core::Item::Activity do
+  it "test simle item" do
     activity_model = Core::Model::Activity.from_json(%(
     {
       "name": "DDOS with ping",
@@ -9,7 +9,7 @@ describe Core::Instance::Activity do
       "requirements": []
     }))
 
-    activity = Core::Instance::Activity.from_json(%({ "id": 0, "model": "DDOS with ping", "completion": 0.0 }), [activity_model], Game::Person.new(0))
+    activity = Core::Item::Activity.from_json(%({ "id": 0, "model": "DDOS with ping", "completion": 0.0 }), [activity_model], Game::Person.new(0))
     activity.id.should eq 0
     activity.model.should eq "DDOS with ping"
     activity.completion.should eq 0.0

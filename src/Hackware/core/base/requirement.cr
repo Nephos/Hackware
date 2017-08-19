@@ -12,7 +12,7 @@ class Core::Requirement
   )
 
   # TODO
-  def exec(context : Core::Instance) : Bool
+  def exec(context : Core::Item) : Bool
     false
   end
 

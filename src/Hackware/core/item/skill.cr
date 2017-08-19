@@ -1,6 +1,6 @@
-class Core::InstanceJSON::Skill
+class Core::ItemJSON::Skill
   alias Id = UInt32
-  include Core::InstanceJSON
+  include Core::ItemJSON
   JSON.mapping(
     id: Id,
     model: String,
@@ -9,9 +9,9 @@ class Core::InstanceJSON::Skill
   )
 end
 
-class Core::Instance::Skill < Core::InstanceJSON::Skill
-  include Core::Instance
-  extend Core::Instance::FromJSON
+class Core::Item::Skill < Core::ItemJSON::Skill
+  include Core::Item
+  extend Core::Item::FromJSON
   getter model_ref : Core::Model::Skill
   getter owner : Game::Person
 end

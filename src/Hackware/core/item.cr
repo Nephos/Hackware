@@ -1,14 +1,14 @@
-require "./instance_json"
+require "./item_json"
 
-module Core::Instance
-  include Core::InstanceJSON
+module Core::Item
+  include Core::ItemJSON
 
   abstract def model_ref : Model
   abstract def owner : Game::Person
   # abstract def initialize(jpp : JSON::PullParser, models : Array(Core::Model))
 end
 
-module Core::Instance::FromJSON
+module Core::Item::FromJSON
   def from_json(io_or_string, *args)
     parser = JSON::PullParser.new io_or_string
     new parser, *args
