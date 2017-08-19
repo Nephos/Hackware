@@ -1,4 +1,6 @@
 require "./item_json"
+require "./base/resolvable"
+require "./base/terminal"
 
 module Core::Item
   include Core::ItemJSON
@@ -6,6 +8,8 @@ module Core::Item
   abstract def model_ref : Model
   abstract def owner : Game::Person
   # abstract def initialize(jpp : JSON::PullParser, models : Array(Core::Model))
+
+  include Core::Terminal::AndResolvable
 end
 
 module Core::Item::FromJSON

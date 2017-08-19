@@ -29,4 +29,14 @@ class Core::Item::Activity < Core::ItemJSON::Activity
     hook = (activity.hooks[hook]?)
     hook.exec(mods, self) unless hook.nil?
   end
+
+  #############################################################################
+
+  def resolve(fct : String) : Core::Resolvable
+    self
+  end
+
+  def termine(operator : String, values : Array(String)) : Bool
+    false
+  end
 end

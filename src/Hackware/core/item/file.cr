@@ -15,4 +15,14 @@ class Core::Item::File < Core::ItemJSON::File
   extend Core::Item::FromJSON
   getter model_ref : Core::Model::File
   getter owner : Game::Person
+
+  #############################################################################
+
+  def resolve(fct : String) : Core::Resolvable
+    self
+  end
+
+  def termine(operator : String, values : Array(String)) : Bool
+    false
+  end
 end

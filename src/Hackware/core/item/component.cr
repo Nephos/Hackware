@@ -18,4 +18,14 @@ class Core::Item::Component < Core::ItemJSON::Component
     hook = (activity.hooks["install"]?)
     hook.exec(mods, self, machine.id) unless hook.nil?
   end
+
+  #############################################################################
+
+  def resolve(fct : String) : Core::Resolvable
+    self
+  end
+
+  def termine(operator : String, values : Array(String)) : Bool
+    false
+  end
 end
