@@ -6,9 +6,9 @@ class Core::Requirement
   # Example (self = Skill)
   #   {path: "self.player.skills", operator: ">=", ["hacking", "3"] }
   JSON.mapping(
-  path: String,
-  operator: String,
-  value: Array(String),
+    path: String,
+    operator: String,
+    value: Array(String),
   )
 
   # TODO

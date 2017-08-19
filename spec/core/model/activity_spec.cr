@@ -12,7 +12,7 @@ describe Core::Model::Activity do
     component.duration.should eq 600
     component.attributes_usage.should eq({"computations" => 25.0})
     component.requirements.should eq [] of Core::Requirement
-    component.hooks["install"]?.should be_a Core::Hook
+    #component.hooks["install"]?.nil?.should be false
     component.hooks["install"].mod.should eq "DDOS"
     component.hooks["install"].function.should eq "activity DDOS with ping"
   end

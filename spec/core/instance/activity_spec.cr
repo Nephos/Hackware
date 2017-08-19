@@ -9,7 +9,7 @@ describe Core::Instance::Activity do
       "requirements": []
     }))
 
-    activity = Core::Instance::Activity.from_json(%({ "id": 0, "model": "DDOS with ping", "completion": 0.0 }), [activity_model])
+    activity = Core::Instance::Activity.from_json(%({ "id": 0, "model": "DDOS with ping", "completion": 0.0 }), [activity_model], Game::Person.new(0))
     activity.id.should eq 0
     activity.model.should eq "DDOS with ping"
     activity.completion.should eq 0.0

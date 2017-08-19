@@ -1,7 +1,8 @@
 class Core::InstanceJSON::Machine
+  alias Id = UInt32
   include Core::InstanceJSON
   JSON.mapping(
-    id: UInt32,
+    id: Id,
     model: String,
     name: String,
   )
@@ -11,4 +12,5 @@ class Core::Instance::Machine < Core::InstanceJSON::Machine
   include Core::Instance
   extend Core::Instance::FromJSON
   getter model_ref : Core::Model::Machine
+  getter owner : Game::Person
 end

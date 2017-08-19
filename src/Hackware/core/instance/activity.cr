@@ -1,7 +1,8 @@
 class Core::InstanceJSON::Activity
+  alias Id = UInt32
   include Core::InstanceJSON
   JSON.mapping(
-    id: UInt32,
+    id: Id,
     model: String,
     completion: Float64,
   )
@@ -11,6 +12,7 @@ class Core::Instance::Activity < Core::InstanceJSON::Activity
   include Core::Instance
   extend Core::Instance::FromJSON
   getter model_ref : Core::Model::Activity
+  getter owner : Game::Person
 
   # Execute a hook.
   #
