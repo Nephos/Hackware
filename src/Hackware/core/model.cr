@@ -1,5 +1,6 @@
 module Core::Model
   abstract def name
+
   include Core::Traversable
 
   def resolve(path : String) : Core::Resolvable

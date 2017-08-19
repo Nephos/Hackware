@@ -27,35 +27,50 @@ class Core::Item::Skill < Core::ItemJSON::Skill
     "level_less",
     "level_less_or_eq",
     "level_eq",
+    #"xp_is_max",
   )
 
-  def level_greater(args)
-    raise "Invalid requirement (level_greater) with arguments (#{args})" if args.size != 1
-    arg = UInt32.new(args.first)
-    return @level > arg
+  # arguments:
+  #  - level: UInt32
+  def level_greater(values)
+    # raise "Invalid requirement (level_greater) with arguments (#{values})" if values.size != 1
+    # arg = UInt32.new(values.first)
+    args = __require_arguments("level_greater", values, UInt32)
+    return @level > args[0]
   end
 
-  def level_greater_or_eq(args)
-    raise "Invalid requirement (level_greater_or_eq) with arguments (#{args})" if args.size != 1
-    arg = UInt32.new(args.first)
-    return @level >= arg
+  # arguments:
+  #  - level: UInt32
+  def level_greater_or_eq(values)
+    args = __require_arguments("level_greater_or_eq", values, UInt32)
+    return @level >= args[0]
   end
 
-  def level_less(args)
-    raise "Invalid requirement (level_less) with arguments (#{args})" if args.size != 1
-    arg = UInt32.new(args.first)
-    return @level < arg
+  # arguments:
+  #  - level: UInt32
+  def level_less(values)
+    args = __require_arguments("level_less", values, UInt32)
+    return @level < args[0]
   end
 
-  def level_less_or_eq(args)
-    raise "Invalid requirement (level_less_or_eq) with arguments (#{args})" if args.size != 1
-    arg = UInt32.new(args.first)
-    return @level <= arg
+  # arguments:
+  #  - level: UInt32
+  def level_less_or_eq(values)
+    args = __require_arguments("level_less_or_eq", values, UInt32)
+    return @level <= args[0]
   end
 
-  def level_eq(args)
-    raise "Invalid requirement (level_eq) with arguments (#{args})" if args.size != 1
-    arg = UInt32.new(args.first)
-    return @level == arg
+  # arguments:
+  #  - level: UInt32
+  def level_eq(values)
+    args = __require_arguments("level_eq", values, UInt32)
+    return @level == args[0]
   end
+
+  # arguments:
+  #  - level: UInt32
+  # def xp_is_max(values)
+  #   #__require_no_arguments("is_max", values)
+  #   return @xp >= 1.0
+  # end
 end

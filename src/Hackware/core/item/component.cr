@@ -25,7 +25,14 @@ class Core::Item::Component < Core::ItemJSON::Component
     "owner",
   )
 
-  def termine(operator : String, values : Array(String)) : Core::Terminal::Comp
-    false
+  Core::Terminal.__set_operators(
+    "is_attached_to",
+  )
+
+  # arguments:
+  #   - id: UInt32
+  def is_attached_to(values)
+    args = __require_arguments("is_attached_to", values, String)
+    return @machine_name == args[0]
   end
 end

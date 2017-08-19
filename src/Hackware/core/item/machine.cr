@@ -20,7 +20,14 @@ class Core::Item::Machine < Core::ItemJSON::Machine
     "owner",
   )
 
-  def termine(operator : String, values : Array(String)) : Core::Terminal::Comp
-    false
+  Core::Terminal.__set_operators(
+    "name_is",
+  )
+
+  # arguments:
+  #   - name: String
+  def name_is(values)
+    args = __require_arguments("name_is", values, String)
+    return @name == args[0]
   end
 end

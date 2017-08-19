@@ -36,7 +36,13 @@ class Core::Item::Activity < Core::ItemJSON::Activity
     "owner",
   )
 
-  def termine(operator : String, values : Array(String)) : Core::Terminal::Comp
-    false
+  Core::Terminal.__set_operators(
+    "is_completed",
+  )
+
+  # arguments: none
+  def is_attached_to(values)
+    __require_no_arguments("is_max", values)
+    return @completion >= 1.0
   end
 end

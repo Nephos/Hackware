@@ -22,7 +22,27 @@ class Core::Item::File < Core::ItemJSON::File
     "owner",
   )
 
-  def termine(operator : String, values : Array(String)) : Core::Terminal::Comp
-    false
+  Core::Terminal.__set_operators(
+    "is_executable",
+    "is_writable",
+    "is_readable",
+  )
+
+  # arguments: none
+  def is_executable(values)
+    __require_no_arguments("is_max", values)
+    return permissions.includes? "x"
+  end
+
+  # arguments: none
+  def is_writable(values)
+    __require_no_arguments("is_max", values)
+    return permissions.includes? "w"
+  end
+
+  # arguments: none
+  def is_readable(values)
+    __require_no_arguments("is_max", values)
+    return permissions.includes? "r"
   end
 end
