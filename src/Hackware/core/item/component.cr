@@ -21,9 +21,9 @@ class Core::Item::Component < Core::ItemJSON::Component
 
   #############################################################################
 
-  def resolve(fct : String) : Core::Resolvable
-    self
-  end
+  Core::Resolvable.__set_paths(
+    "owner",
+  )
 
   def termine(operator : String, values : Array(String)) : Bool
     false

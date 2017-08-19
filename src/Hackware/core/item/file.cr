@@ -18,9 +18,9 @@ class Core::Item::File < Core::ItemJSON::File
 
   #############################################################################
 
-  def resolve(fct : String) : Core::Resolvable
-    self
-  end
+  Core::Resolvable.__set_paths(
+    "owner",
+  )
 
   def termine(operator : String, values : Array(String)) : Bool
     false
