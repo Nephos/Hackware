@@ -22,10 +22,6 @@ module Core::Resolvable
     end
   end
 
-  macro __get_path(path)
-
-  end
-
   # Resolve a complete path
   def resolve_path(path = Array(String)) : Core::Resolvable
     return self if path.empty?
