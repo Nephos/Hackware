@@ -25,11 +25,6 @@ module Core::Terminal
     TERMINE_OPERATORS[operator]?
   end
 
-  module AndResolvable
-    include Core::Terminal
-    include Core::Terminal
-  end
-
   class UndefinedOperator < Exception
   end
 end

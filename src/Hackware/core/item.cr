@@ -1,6 +1,7 @@
 require "./item_json"
 require "./base/resolvable"
 require "./base/terminal"
+require "./base/traversable"
 
 module Core::Item
   include Core::ItemJSON
@@ -10,7 +11,7 @@ module Core::Item
 
   # abstract def initialize(jpp : JSON::PullParser, models : Array(Core::Model))
 
-  include Core::Terminal::AndResolvable
+  include Core::Traversable
 end
 
 module Core::Item::FromJSON

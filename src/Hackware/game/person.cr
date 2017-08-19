@@ -1,7 +1,5 @@
 class Game::Person
-  include Core::Terminal::AndResolvable
-  include Core::Resolvable
-  include Core::Terminal
+  include Core::Traversable
 
   JSON.mapping(
     # unique id

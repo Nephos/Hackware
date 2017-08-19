@@ -14,8 +14,6 @@ class Core::Item::Skill < Core::ItemJSON::Skill
   extend Core::Item::FromJSON
   getter model_ref : Core::Model::Skill
   getter owner : Game::Person
-  include Core::Resolvable
-  include Core::Terminal
 
   #############################################################################
 

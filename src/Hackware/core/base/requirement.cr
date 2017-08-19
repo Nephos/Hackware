@@ -1,5 +1,6 @@
 require "./resolvable"
 require "./terminal"
+require "./traversable"
 
 class Core::Requirement
   # `type`.operator(*value)
@@ -14,7 +15,7 @@ class Core::Requirement
 
   # TODO
   # def exec(context : Core::Item) : Bool
-  def resolve_value(context : Core::Terminal::AndResolvable) : Bool
+  def resolve_value(context : Core::Traversable) : Bool
     resolve_path(context).termine(self.operator, self.values)
   end
 
