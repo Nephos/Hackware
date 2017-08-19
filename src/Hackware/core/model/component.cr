@@ -9,7 +9,11 @@ class Core::Model::Component
     hooks: Hash(String, Hook),
   )
 
-  def termine(operator : String, values : Array(String)) : Comp
-    false
-  end
+  Core::Terminal.__set_operators(
+    "name", "attributes", "slots"
+  )
+
+  Core::Terminal.__define_read_operators(
+    "name", "attributes", "slots"
+  )
 end

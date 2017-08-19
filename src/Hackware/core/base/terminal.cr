@@ -24,6 +24,15 @@ module Core::Terminal
     end
   end
 
+  # Defines getter with an unused parameter so it is compatible with the prototype used by __set_operators()
+  macro __define_read_operators(*operators)
+    {% for op in operators %}
+      def {{op.id}}(values)
+        @{{op.id}}
+      end
+    {% end %}
+  end
+
   class UndefinedOperator < Exception
   end
 end

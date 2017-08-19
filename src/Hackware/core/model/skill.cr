@@ -4,7 +4,11 @@ class Core::Model::Skill
     name: String,
   )
 
-  def termine(operator : String, values : Array(String)) : Comp
-    false
-  end
+  Core::Terminal.__set_operators(
+    "name"
+  )
+
+  Core::Terminal.__define_read_operators(
+    "name"
+  )
 end

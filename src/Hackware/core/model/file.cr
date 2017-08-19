@@ -6,7 +6,11 @@ class Core::Model::File
     type: String,
   )
 
-  def termine(operator : String, values : Array(String)) : Comp
-    false
-  end
+  Core::Terminal.__set_operators(
+    "name", "content", "type"
+  )
+
+  Core::Terminal.__define_read_operators(
+    "name", "content", "type"
+  )
 end

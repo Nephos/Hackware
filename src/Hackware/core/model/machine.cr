@@ -9,7 +9,11 @@ class Core::Model::Machine
     attributes: Hash(String, Float64),
   )
 
-  def termine(operator : String, values : Array(String)) : Comp
-    false
-  end
+  Core::Terminal.__set_operators(
+    "name", "type", "slots", "attributes"
+  )
+
+  Core::Terminal.__define_read_operators(
+    "name", "type", "slots", "attributes"
+  )
 end
