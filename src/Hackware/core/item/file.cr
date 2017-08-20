@@ -28,21 +28,15 @@ class Core::Item::File < Core::ItemJSON::File
     "is_readable",
   )
 
-  # arguments: none
-  def is_executable(values)
-    __require_no_arguments("is_max", values)
+  Core::Terminal.__define_operator "executable" do
     permissions.includes? "x"
   end
 
-  # arguments: none
-  def is_writable(values)
-    __require_no_arguments("is_max", values)
+  Core::Terminal.__define_operator "is_writable" do
     permissions.includes? "w"
   end
 
-  # arguments: none
-  def is_readable(values)
-    __require_no_arguments("is_max", values)
+  Core::Terminal.__define_operator "is_readable" do
     permissions.includes? "r"
   end
 end

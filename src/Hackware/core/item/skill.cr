@@ -30,47 +30,27 @@ class Core::Item::Skill < Core::ItemJSON::Skill
     "xp_is_max"
   )
 
-  # arguments:
-  #  - level: UInt32
-  def level_greater(values)
-    # raise "Invalid requirement (level_greater) with arguments (#{values})" if values.size != 1
-    # arg = UInt32.new(values.first)
-    args = __require_arguments("level_greater", values, UInt32)
+  Core::Terminal.__define_operator "level_greater", UInt32 do |args|
     @level > args[0]
   end
 
-  # arguments:
-  #  - level: UInt32
-  def level_greater_or_eq(values)
-    args = __require_arguments("level_greater_or_eq", values, UInt32)
+  Core::Terminal.__define_operator "level_greater_or_eq", UInt32 do |args|
     @level >= args[0]
   end
 
-  # arguments:
-  #  - level: UInt32
-  def level_less(values)
-    args = __require_arguments("level_less", values, UInt32)
+  Core::Terminal.__define_operator "level_less", UInt32 do |args|
     @level < args[0]
   end
 
-  # arguments:
-  #  - level: UInt32
-  def level_less_or_eq(values)
-    args = __require_arguments("level_less_or_eq", values, UInt32)
+  Core::Terminal.__define_operator "level_less_or_eq", UInt32 do |args|
     @level <= args[0]
   end
 
-  # arguments:
-  #  - level: UInt32
-  def level_eq(values)
-    args = __require_arguments("level_eq", values, UInt32)
+  Core::Terminal.__define_operator "level_eq", UInt32 do |args|
     @level == args[0]
   end
 
-  # arguments:
-  #  - level: UInt32
-  def xp_is_max(values)
-    __require_no_arguments("is_max", values)
+  Core::Terminal.__define_operator "xp_is_max" do
     @xp >= 1.0
   end
 end

@@ -40,9 +40,7 @@ class Core::Item::Activity < Core::ItemJSON::Activity
     "is_completed",
   )
 
-  # arguments: none
-  def is_attached_to(values)
-    __require_no_arguments("is_max", values)
+  Core::Terminal.__define_operator "is_attached_to" do
     @completion >= 1.0
   end
 end

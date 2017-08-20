@@ -31,8 +31,7 @@ class Core::Item::Component < Core::ItemJSON::Component
 
   # arguments:
   #   - id: UInt32
-  def is_attached_to(values)
-    args = __require_arguments("is_attached_to", values, String)
+  Core::Terminal.__define_operator "is_attached_to", String do |args|
     @machine_name == args[0]
   end
 end

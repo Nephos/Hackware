@@ -24,10 +24,7 @@ class Core::Item::Machine < Core::ItemJSON::Machine
     "name_is",
   )
 
-  # arguments:
-  #   - name: String
-  def name_is(values)
-    args = __require_arguments("name_is", values, String)
+  Core::Terminal.__define_operator "name_is", String do |args|
     @name == args[0]
   end
 end
