@@ -34,7 +34,7 @@ module Core::Terminal
   end
 
   macro __define_operator(_operator, *_types, &_block)
-    def _t_{{_operator.id}}(values)
+    def _t_{{_operator.id}}(values : Array(String)) : Core::Terminal::Comp
       {% if _types.empty? %}
         Core::Terminal.__require_no_arguments({{_operator}}, values)
         {{yield}}

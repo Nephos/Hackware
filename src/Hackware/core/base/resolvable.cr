@@ -39,14 +39,14 @@ module Core::Resolvable
   # Defines getter with an unused parameter so it is compatible with the prototype used by __set_operators()
   macro __define_read_paths(*_paths)
     {% for _path in _paths %}
-      def _r_{{_path.id}}()
+      def _r_{{_path.id}}() : Core::Resolvable
         @{{_path.id}}
       end
     {% end %}
   end
 
   macro __define_path(_path, &_block)
-    def _r_{{_path.id}}()
+    def _r_{{_path.id}}() : Core::Resolvable
       {{yield}}
     end
   end
