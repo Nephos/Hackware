@@ -31,7 +31,18 @@ class Core::Item::Skill < Core::ItemJSON::Skill
     "level_less",
     "level_less_or_eq",
     "level_eq",
-    "xp_is_max"
+    "xp_is_max",
+    "id",
+    "model",
+    "level",
+    "xp"
+  )
+
+  Core::Terminal.__define_read_operators(
+    "id",
+    "model",
+    "level",
+    "xp"
   )
 
   Core::Terminal.__define_operator "level_greater", UInt32 do |args|

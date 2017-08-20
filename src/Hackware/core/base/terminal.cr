@@ -1,7 +1,7 @@
 require "./resolvable"
 
 module Core::Terminal
-  alias Atom = Int64 | Float64 | String | Bool | Nil
+  alias Atom = Int64 | UInt64 | Int32 | UInt32 | Int16 | UInt16 | Int8 | UInt8 | Float64 | Float32 | String | Bool | Nil
   alias Comp = Array(Comp) | Hash(Comp, Comp) | Atom
 
   abstract def termine(operator : String, values : Array(String)) : Comp
@@ -28,6 +28,7 @@ module Core::Terminal
   macro __define_read_operators(*_operators)
     {% for _op in _operators %}
       def _t_{{_op.id}}(values)
+        Core::Terminal.__require_no_arguments({{_op}}, values)
         @{{_op.id}}
       end
     {% end %}

@@ -27,5 +27,8 @@ describe Core::Item::Skill do
     skill.termine("xp_is_max", [] of String).should be_false
     expect_raises { skill.termine("level_greater", ["0", "too_many_args"]) }
     expect_raises { skill.termine("xp_is_max", ["too_many_args"]) }
+
+    skill.termine("xp", [] of String).should eq 0
+    skill.termine("level", [] of String).should eq 1
   end
 end
