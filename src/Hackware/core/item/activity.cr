@@ -36,6 +36,10 @@ class Core::Item::Activity < Core::ItemJSON::Activity
     "owner",
   )
 
+  Core::Resolvable.__define_read_paths(
+    "owner"
+  )
+
   Core::Terminal.__set_operators(
     "is_completed",
   )

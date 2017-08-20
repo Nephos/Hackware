@@ -22,6 +22,10 @@ class Core::Item::File < Core::ItemJSON::File
     "owner",
   )
 
+  Core::Resolvable.__define_read_paths(
+    "owner"
+  )
+
   Core::Terminal.__set_operators(
     "is_executable",
     "is_writable",

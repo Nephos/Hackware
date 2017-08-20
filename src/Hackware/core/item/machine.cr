@@ -20,6 +20,10 @@ class Core::Item::Machine < Core::ItemJSON::Machine
     "owner",
   )
 
+  Core::Resolvable.__define_read_paths(
+    "owner"
+  )
+
   Core::Terminal.__set_operators(
     "name_is",
   )

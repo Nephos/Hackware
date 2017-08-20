@@ -10,7 +10,7 @@ module Core::Resolvable
   macro __set_paths(*paths)
     RESOLVABLE_PATHS = {
       {% for op in paths %}
-        {{op}} => -> (resolvable : self) { resolvable.{{op.id}}() },
+        {{op}} => -> (resolvable : self) { resolvable._r_{{op.id}}() },
       {% end %}
     }
 
@@ -34,6 +34,21 @@ module Core::Resolvable
   private def _resolve_partial_path(partial : String) : Core::Resolvable
     return self if partial == "self"
     self.resolve(partial)
+  end
+
+  # Defines getter with an unused parameter so it is compatible with the prototype used by __set_operators()
+  macro __define_read_paths(*_paths)
+    {% for _path in _paths %}
+      def _r_{{_path.id}}()
+        @{{_path.id}}
+      end
+    {% end %}
+  end
+
+  macro __define_path(_path, &_block)
+    def _r_{{_path.id}}()
+      {{yield}}
+    end
   end
 
   class UnresolvablePath < Exception
