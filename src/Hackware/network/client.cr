@@ -1,4 +1,4 @@
-class Hw::Client
+class Network::Client
   def self.handle(client_socket)
     client = new client_socket
     client.start

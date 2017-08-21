@@ -4,7 +4,7 @@ require "openssl"
 
 require "./client"
 
-class Hw::Server
+class Network::Server
   class Network
     class Ssl
       JSON.mapping(key: String, cert: String)
@@ -18,9 +18,10 @@ class Hw::Server
   def self.init
     config_path = File.expand_path("./server.json")
     if !File.exists?(config_path)
-      STDERR.puts "Error: no server configuration found in #{config_path}"
+      STDERR.puts "Error: no server configuration found in #{config_path}!"
       exit(1)
     end
+    STDERR.puts "\"#{config_path}\" configuration file read."
 
     Server.from_json File.read(config_path)
   end
@@ -31,7 +32,7 @@ class Hw::Server
   end
 
   private def _handle_client(socket)
-    Hw::Client.handle socket
+    ::Network::Client.handle socket
   end
 
   # Start the server with the SSL configuration.
