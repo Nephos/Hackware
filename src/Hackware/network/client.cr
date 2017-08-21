@@ -4,10 +4,10 @@ class Network::Client
     client.start
   end
 
-  getter socket : OpenSSL::SSL::Socket::Server | TCPSocket
+  getter io : IO::Buffered
 
   # TODO: stuff with client
-  def initialize(@socket)
+  def initialize(@io)
   end
 
   def start
