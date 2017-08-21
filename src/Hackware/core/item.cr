@@ -5,13 +5,12 @@ require "./base/traversable"
 
 module Core::Item
   include Core::ItemJSON
+  include Core::Traversable
 
   abstract def model_ref : Model
   abstract def owner : Game::Person
 
   # abstract def initialize(jpp : JSON::PullParser, models : Array(Core::Model))
-
-  include Core::Traversable
 end
 
 module Core::Item::FromJSON

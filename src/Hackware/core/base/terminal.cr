@@ -24,7 +24,7 @@ module Core::Terminal
     end
   end
 
-  # Defines getter with an unused parameter so it is compatible with the prototype used by __set_operators()
+  # Defines getter with an unused parameter so it is compatible with the prototype used by __set_operators
   macro __define_read_operators(*_operators)
     {% for _op in _operators %}
       def _t_{{_op.id}}(values)
@@ -34,6 +34,7 @@ module Core::Terminal
     {% end %}
   end
 
+  # Define an operator compatible with __set_operators. It also check the type of the arguments.
   macro __define_operator(_operator, *_types, &_block)
     def _t_{{_operator.id}}(values : Array(String)) : Core::Terminal::Comp
       {% if _types.empty? %}

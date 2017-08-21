@@ -1,4 +1,3 @@
-require "./core/base"
 require "./core/item_json"
 require "./core/item"
 require "./core/model"

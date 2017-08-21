@@ -1,7 +1,7 @@
 module Core::Resolvable
   # Resolve a part of a path.
   #
-  # fct is a string to indicate which functon the resolvable has to execute to resolve the problem.
+  # fct is a string to indicate which function the current object has to execute to resolve the problem.
   abstract def resolve(fct : String) : Core::Resolvable
 
   # Defines a list of functions that are used to resolve paths, and defines `resolve`.
@@ -36,7 +36,7 @@ module Core::Resolvable
     self.resolve(partial)
   end
 
-  # Defines getter with an unused parameter so it is compatible with the prototype used by __set_operators()
+  # Defines getter with an unused parameter so it is compatible with the prototype used by __set_opaths
   macro __define_read_paths(*_paths)
     {% for _path in _paths %}
       def _r_{{_path.id}}() : Core::Resolvable
@@ -45,6 +45,7 @@ module Core::Resolvable
     {% end %}
   end
 
+  # Defines a function compatible with __set_paths.
   macro __define_path(_path, &_block)
     def _r_{{_path.id}}() : Core::Resolvable
       {{yield}}

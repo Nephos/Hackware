@@ -9,8 +9,10 @@ class Hw::Server
     class Ssl
       JSON.mapping(key: String, cert: String)
     end
+
     JSON.mapping(port: UInt16, host: String, ssl: Ssl?)
   end
+
   JSON.mapping(network: Network, seed: UInt32)
 
   def self.init
@@ -44,7 +46,7 @@ class Hw::Server
   # Start the server without SSL.
   private def _start(ssl : Nil)
     _loop_start(_new_server) do |client_socket|
-      spawn _handle_client  client_socket
+      spawn _handle_client client_socket
     end
   end
 
