@@ -1,2 +1,2 @@
 require "spec"
-require "../src/Hackware"
+require "../src/Hackware/*"

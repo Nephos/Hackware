@@ -1,5 +1,6 @@
 require "duktape"
 require "duktape/runtime"
+# require "json"
 
 class Mods
   getter list : Array(String)

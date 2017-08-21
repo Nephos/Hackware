@@ -1,3 +1,5 @@
+require "json"
+
 require "./core/item_json"
 require "./core/item"
 require "./core/model"
