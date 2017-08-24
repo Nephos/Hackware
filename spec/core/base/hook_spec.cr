@@ -3,7 +3,7 @@ require "spec"
 describe Core::Hook do
   it "basic exec" do
     hook = Core::Hook.from_json(%({ "function": "fct_test", "mod": "mod_test" }))
-    mods = Mods.new
+    mods = Mods::Sandbox.new
     Tempfile.open("mod_test") do |f|
       f.puts %({fct_test: function(a, b) { return "result: " + a + " = " + b; }})
       f.flush

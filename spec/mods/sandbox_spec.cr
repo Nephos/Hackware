@@ -1,9 +1,9 @@
 require "spec"
 require "tempfile"
 
-describe Mods do
+describe Mods::Sandbox do
   it "basic test" do
-    mods = Mods.new
+    mods = Mods::Sandbox.new
     Tempfile.open("mod_test") do |f|
       f.puts "{mod_entry: function(a) { return a + 1; }}"
       f.flush
