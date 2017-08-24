@@ -4,13 +4,30 @@ class Network::Client
     client.start
   end
 
-  getter io : IO::Buffered
+  property io : IO::Buffered
 
   # TODO: stuff with client
   def initialize(@io)
   end
 
+  # Loops to handle incoming requests
   def start
-    # loop { }
+    while handle_incoming_request(@io.gets)
+      # after request is handled
+    end
+    @io.close
+  end
+
+  # Handles a incoming packet. Returns true if the request is ok.
+  def handle_incoming_request(request : String?) : Bool
+    return false if request.nil?
+    return _handle_request request
+  end
+
+  # TODO
+  # Handles a request sent by a client.
+  private def _handle_request(request : String) : Bool
+    return false if request == "QUIT"
+    return true
   end
 end
