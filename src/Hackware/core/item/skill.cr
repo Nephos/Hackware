@@ -13,7 +13,7 @@ class Core::Item::Skill < Core::ItemJSON::Skill
   include Core::Item
   extend Core::Item::FromJSON
   getter model_ref : Core::Model::Skill
-  getter owner : Game::Person
+  getter owner : Owner::Person
 
   #############################################################################
 

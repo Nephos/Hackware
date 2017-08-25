@@ -1,7 +1,7 @@
 require "spec"
 
 describe Core::Item::Activity do
-  it "test simle item" do
+  it "test simple item" do
     activity_model = Core::Model::Activity.from_json(%(
     {
       "name": "DDOS with ping",
@@ -10,7 +10,7 @@ describe Core::Item::Activity do
       "hooks": {"install": {"mod": "DDOS", "function": "activity DDOS with ping"}},
       "requirements": []
     }))
-    owner = Game::Person.new(0)
+    owner = Owner::Person.new(0)
 
     activity = Core::Item::Activity.from_json(%({ "id": 0, "model": "DDOS with ping", "completion": 0.0 }), [activity_model], owner)
     activity.id.should eq 0

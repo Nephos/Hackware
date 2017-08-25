@@ -3,7 +3,7 @@ require "spec"
 describe Core::Item::Skill do
   it "test simle item" do
     skill_model = Core::Model::Skill.from_json(%({ "name": "Programming" }))
-    owner = Game::Person.new(0)
+    owner = Owner::Person.new(0)
 
     skill = Core::Item::Skill.from_json(
       %({ "id": 0, "model": "Programming", "xp": 0.0, "level": 1 }), [skill_model], owner)

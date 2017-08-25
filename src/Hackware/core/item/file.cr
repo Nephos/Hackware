@@ -14,7 +14,7 @@ class Core::Item::File < Core::ItemJSON::File
   include Core::Item
   extend Core::Item::FromJSON
   getter model_ref : Core::Model::File
-  getter owner : Game::Person
+  getter owner : Owner::Person
 
   #############################################################################
 

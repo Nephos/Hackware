@@ -4,7 +4,7 @@ TODO: Write a description here
 
 ## Github informations
 
-We prefere to work on our private server <https://git.nephos.xyz/Hackware/Hackware>.
+We prefer to work on our private server <https://git.nephos.xyz/Hackware/Hackware>.
 Much like github, free registration, etc.
 Still, you can also open a issue / pull request on github, but it might be slower to process.
 
@@ -18,8 +18,8 @@ TODO: Write usage instructions here
 
 ## Development
 
-You are a modder ? You may want to read the wiki.
-You are a developer ? You might also want to do so.
+Are you a modder ? You may want to read the wiki.  
+Are you a developer ? You might also want to do so.  
 The wiki is available at this address: <https://git.nephos.xyz/Hackware/Hackware/wiki>
 
 ## Contributing
@@ -33,3 +33,4 @@ The wiki is available at this address: <https://git.nephos.xyz/Hackware/Hackware
 ## Contributors
 
 - [Nephos](https://github.com/Nephos) Arthur Poulet - creator, maintainer
+- [Damaia](https://gitlab.com/Damaia) Lucie Dispot - contributor

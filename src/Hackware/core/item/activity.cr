@@ -12,7 +12,7 @@ class Core::Item::Activity < Core::ItemJSON::Activity
   include Core::Item
   extend Core::Item::FromJSON
   getter model_ref : Core::Model::Activity
-  getter owner : Game::Person
+  getter owner : Owner::Person
 
   # Execute a hook.
   #

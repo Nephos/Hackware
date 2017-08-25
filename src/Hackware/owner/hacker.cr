@@ -1,6 +1,6 @@
 require "./person"
 
-class Game::Hacker < Game::Person
+class Owner::Hacker < Owner::Person
   def initialize(pull : ::JSON::PullParser)
     super(pull)
   end

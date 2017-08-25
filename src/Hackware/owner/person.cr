@@ -1,4 +1,4 @@
-class Game::Person
+class Owner::Person
   include Core::Traversable
 
   JSON.mapping(

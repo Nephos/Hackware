@@ -12,7 +12,7 @@ class Core::Item::Component < Core::ItemJSON::Component
   include Core::Item
   extend Core::Item::FromJSON
   getter model_ref : Core::Model::Component
-  getter owner : Game::Person
+  getter owner : Owner::Person
 
   def plug(machine : Core::Item::Machine, mods : Mods)
     hook = (activity.hooks["install"]?)

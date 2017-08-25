@@ -12,7 +12,7 @@ class Core::Item::Machine < Core::ItemJSON::Machine
   include Core::Item
   extend Core::Item::FromJSON
   getter model_ref : Core::Model::Machine
-  getter owner : Game::Person
+  getter owner : Owner::Person
 
   #############################################################################
 
