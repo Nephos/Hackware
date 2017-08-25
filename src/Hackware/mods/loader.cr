@@ -3,11 +3,11 @@ require "./sandbox"
 class Mods::Loader
   property base_directory : String
   @sandbox : Mods::Sandbox
-  @models : Array(Core::Model)
+  @models : Mods::Models
 
   def initialize(@base_directory = "./mods",
                  @sandbox = Mods::Sandbox.new,
-                 @models = Array(Core::Model).new)
+                 @models = Mods::Models.new)
   end
 
   # Returns the directory where the object mods are stored.
@@ -70,9 +70,11 @@ class Mods::Loader
 
   # TODO
   def _load_script(mod)
+    @sandbox.load(mod)
   end
 
   # TODO
   def _load_object(mod)
+    @models.load(mod)
   end
 end

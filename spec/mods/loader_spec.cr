@@ -2,7 +2,7 @@ require "spec"
 require "tempfile"
 
 describe Mods::Loader do
-  it "basic test" do
+  it "test lists" do
     `rm -rf __mods/`
     `mkdir -p __mods/scripts/ __mods/objects/`
     scripts = %w(test1 test2).map { |script| File.expand_path "__mods/scripts/#{script}.js" }
