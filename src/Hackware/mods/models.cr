@@ -1,4 +1,8 @@
+# This class loads object mods.
+# It stores a list of `Core::Model` which is filled with the
+# objects created by the object mods.
 class Mods::Models
+  # JSON representation of one object mod.
   class ModObject
     JSON.mapping(
       activities: Array(Core::Model::Activity)?,

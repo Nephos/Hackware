@@ -1,8 +1,8 @@
 require "duktape"
 require "duktape/runtime"
 
-# require "json"
-
+# This class loads script mods.
+# It loads the scripts into a sandbox.
 class Mods::Sandbox
   getter list : Array(String)
   getter sandbox : Duktape::Runtime
