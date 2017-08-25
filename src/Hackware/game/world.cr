@@ -1,4 +1,4 @@
-class Gameworld
+class Game::World
   getter person_list : Hash(UInt32, Owner::Person)
   getter machine_list : Hash(UInt32, Core::Item::Machine)
   getter component_list : Hash(UInt32, Core::Item::Component)

@@ -1,3 +1,5 @@
+require "json"
+
 # This class loads object mods.
 # It stores a list of `Core::Model` which is filled with the
 # objects created by the object mods.

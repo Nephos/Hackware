@@ -1,4 +1,5 @@
 require "./sandbox"
+require "./models"
 
 class Mods::Loader
   property base_directory : String
