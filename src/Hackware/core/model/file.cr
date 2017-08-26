@@ -6,11 +6,9 @@ class Core::Model::File
     type: String,
   )
 
-  Core::Terminal.__set_operators(
-    "name", "content", "type"
-  )
-
-  Core::Terminal.__define_read_operators(
-    "name", "content", "type"
-  )
+  RuntimeCall.extends do
+    getter_runtime_call(
+      "name", "content", "type"
+    )
+  end
 end

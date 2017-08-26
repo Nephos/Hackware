@@ -13,22 +13,22 @@ describe Core::Item::Skill do
     skill.xp.should eq 0.0
     skill.level.should eq 1
 
-    skill.termine("level_greater", ["0"]).should be_true
-    skill.termine("level_greater", ["1"]).should be_false
-    skill.termine("level_greater_or_eq", ["0"]).should be_true
-    skill.termine("level_greater_or_eq", ["1"]).should be_true
-    skill.termine("level_greater_or_eq", ["0"]).should be_true
-    skill.termine("level_less", ["2"]).should be_true
-    skill.termine("level_less", ["1"]).should be_false
-    skill.termine("level_less_or_eq", ["1"]).should be_true
-    skill.termine("level_less_or_eq", ["0"]).should be_false
-    skill.termine("level_eq", ["1"]).should be_true
-    skill.termine("level_eq", ["0"]).should be_false
-    skill.termine("xp_is_max", [] of String).should be_false
-    expect_raises { skill.termine("level_greater", ["0", "too_many_args"]) }
-    expect_raises { skill.termine("xp_is_max", ["too_many_args"]) }
+    skill.runtime_call("level_greater", ["0"]).should be_true
+    skill.runtime_call("level_greater", ["1"]).should be_false
+    skill.runtime_call("level_greater_or_eq", ["0"]).should be_true
+    skill.runtime_call("level_greater_or_eq", ["1"]).should be_true
+    skill.runtime_call("level_greater_or_eq", ["0"]).should be_true
+    skill.runtime_call("level_less", ["2"]).should be_true
+    skill.runtime_call("level_less", ["1"]).should be_false
+    skill.runtime_call("level_less_or_eq", ["1"]).should be_true
+    skill.runtime_call("level_less_or_eq", ["0"]).should be_false
+    skill.runtime_call("level_eq", ["1"]).should be_true
+    skill.runtime_call("level_eq", ["0"]).should be_false
+    skill.runtime_call("xp_is_max", [] of String).should be_false
+    expect_raises { skill.runtime_call("level_greater", ["0", "too_many_args"]) }
+    expect_raises { skill.runtime_call("xp_is_max", ["too_many_args"]) }
 
-    skill.termine("xp", [] of String).should eq 0
-    skill.termine("level", [] of String).should eq 1
+    skill.runtime_call("xp", [] of String).should eq 0
+    skill.runtime_call("level", [] of String).should eq 1
   end
 end

@@ -8,6 +8,6 @@ describe Core::Model::Skill do
 
   it "test api" do
     skill = Core::Model::Skill.from_json(%({"name": "Hacking"}))
-    skill.termine("name", [] of String).should eq "Hacking"
+    skill.runtime_call("name", [] of String).should eq "Hacking"
   end
 end

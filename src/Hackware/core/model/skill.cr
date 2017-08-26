@@ -4,11 +4,9 @@ class Core::Model::Skill
     name: String,
   )
 
-  Core::Terminal.__set_operators(
-    "name"
-  )
-
-  Core::Terminal.__define_read_operators(
-    "name"
-  )
+  RuntimeCall.extends do
+    getter_runtime_call(
+      "name"
+    )
+  end
 end

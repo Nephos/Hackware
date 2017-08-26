@@ -1,6 +1,4 @@
 require "./resolvable"
-require "./terminal"
-require "./traversable"
 
 class Core::Requirement
   # `type`.operator(*value)
@@ -19,7 +17,7 @@ class Core::Requirement
   # requirement = Requirement.from_json %({"path": "self.end", "operator": "is_eq", "values": ["1"]})
   # requirement.resolve_value(self_item) # => true/false
   # ```
-  def resolve_value(context : Core::Traversable) : Bool
+  def resolve_value(context : RuntimeCall::IReturnable) : Bool
     !!resolve_path(context).termine(self.operator, self.values)
   end
 
@@ -30,7 +28,7 @@ class Core::Requirement
   # requirement = Requirement.from_json %({"path": "self.end", "operator": "is_eq", "values": ["1"]})
   # requirement.resolve_path(self_item) # => self_item.end (no exactly, but the iead is here)
   # ```
-  def resolve_path(context : Core::Resolvable) : Core::Resolvable
+  def resolve_path(context : RuntimeCall::IReturnable) : RuntimeCall::IReturnable
     context.resolve_path(self.path.split("."))
   end
 end

@@ -1,11 +1,9 @@
 require "./item_json"
 require "./base/resolvable"
-require "./base/terminal"
-require "./base/traversable"
 
 module Core::Item
   include Core::ItemJSON
-  include Core::Traversable
+  include Core::Resolvable
 
   abstract def model_ref : Model
   abstract def owner : Owner::Person

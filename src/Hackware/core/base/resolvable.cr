@@ -1,27 +1,4 @@
 module Core::Resolvable
-  # Resolve a part of a path.
-  #
-  # fct is a string to indicate which function the current object has to execute to resolve the problem.
-  abstract def resolve(fct : String) : Core::Resolvable
-
-  # Defines a list of functions that are used to resolve paths, and defines `resolve`.
-  #
-  # It makes the `resolve` able to call the function by associating their name with a proc.
-  macro __set_paths(*paths)
-    RESOLVABLE_PATHS = {
-      {% for op in paths %}
-        {{op}} => -> (resolvable : self) { resolvable._r_{{op.id}}() },
-      {% end %}
-    }
-
-    # Read into the list of paths functions to call the right one.
-    def resolve(path : String) : Core::Resolvable
-      path_fct = RESOLVABLE_PATHS[path]?
-      raise UnresolvablePath.new %(No resolvable path "#{path}" in (#{self.class})) if path_fct.nil?
-      path_fct.call(self)
-    end
-  end
-
   # Resolve a complete path
   def resolve_path(path = Array(String)) : Core::Resolvable
     return self if path.empty?
@@ -33,25 +10,6 @@ module Core::Resolvable
   # Resolve a part of a path, by using `resolve(function)`
   private def _resolve_partial_path(partial : String) : Core::Resolvable
     return self if partial == "self"
-    self.resolve(partial)
-  end
-
-  # Defines getter with an unused parameter so it is compatible with the prototype used by __set_opaths
-  macro __define_read_paths(*_paths)
-    {% for _path in _paths %}
-      def _r_{{_path.id}}() : Core::Resolvable
-        @{{_path.id}}
-      end
-    {% end %}
-  end
-
-  # Defines a function compatible with __set_paths.
-  macro __define_path(_path, &_block)
-    def _r_{{_path.id}}() : Core::Resolvable
-      {{yield}}
-    end
-  end
-
-  class UnresolvablePath < Exception
+    self.runtime_call(partial)
   end
 end

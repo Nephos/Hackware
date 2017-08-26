@@ -15,11 +15,9 @@ class Core::Model::Activity
     hooks: Hash(String, Hook),
   )
 
-  Core::Terminal.__set_operators(
-    "name", "duration", "attributes_usage"
-  )
-
-  Core::Terminal.__define_read_operators(
-    "name", "duration", "attributes_usage"
-  )
+  RuntimeCall.extends do
+    getter_runtime_call(
+      "name", "duration", "attributes_usage"
+    )
+  end
 end

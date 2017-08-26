@@ -1,5 +1,5 @@
 class Owner::Person
-  include Core::Traversable
+  include Core::Resolvable
 
   JSON.mapping(
     # unique id
@@ -28,15 +28,9 @@ class Owner::Person
 
   #############################################################################
 
-  Core::Terminal.__set_operators(
-    "uid_eq",
-  )
-
-  def resolve(path : String) : Core::Resolvable
-    self
-  end
-
-  Core::Terminal.__define_operator "uid_eq", UInt32 do |args|
-    return @uid == args[0]
+  RuntimeCall.extends do
+    define_runtime_call "uid_eq", UInt32 do |args|
+      @uid == args[0]
+    end
   end
 end

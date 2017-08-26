@@ -9,11 +9,9 @@ class Core::Model::Machine
     attributes: Hash(String, Float64),
   )
 
-  Core::Terminal.__set_operators(
-    "name", "type", "slots", "attributes"
-  )
-
-  Core::Terminal.__define_read_operators(
-    "name", "type", "slots", "attributes"
-  )
+  RuntimeCall.extends do
+    getter_runtime_call(
+      "name", "type", "slots", "attributes"
+    )
+  end
 end

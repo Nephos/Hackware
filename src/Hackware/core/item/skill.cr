@@ -17,55 +17,37 @@ class Core::Item::Skill < Core::ItemJSON::Skill
 
   #############################################################################
 
-  Core::Resolvable.__set_paths(
-    "owner",
-  )
+  RuntimeCall.extends do
+    getter_runtime_call(
+      "id",
+      "model",
+      "level",
+      "xp",
+      "owner"
+    )
 
-  Core::Resolvable.__define_read_paths(
-    "owner"
-  )
+    define_runtime_call "level_greater", UInt32 do |args|
+      @level > args[0]
+    end
 
-  Core::Terminal.__set_operators(
-    "level_greater",
-    "level_greater_or_eq",
-    "level_less",
-    "level_less_or_eq",
-    "level_eq",
-    "xp_is_max",
-    "id",
-    "model",
-    "level",
-    "xp"
-  )
+    define_runtime_call "level_greater_or_eq", UInt32 do |args|
+      @level >= args[0]
+    end
 
-  Core::Terminal.__define_read_operators(
-    "id",
-    "model",
-    "level",
-    "xp"
-  )
+    define_runtime_call "level_less", UInt32 do |args|
+      @level < args[0]
+    end
 
-  Core::Terminal.__define_operator "level_greater", UInt32 do |args|
-    @level > args[0]
-  end
+    define_runtime_call "level_less_or_eq", UInt32 do |args|
+      @level <= args[0]
+    end
 
-  Core::Terminal.__define_operator "level_greater_or_eq", UInt32 do |args|
-    @level >= args[0]
-  end
+    define_runtime_call "level_eq", UInt32 do |args|
+      @level == args[0]
+    end
 
-  Core::Terminal.__define_operator "level_less", UInt32 do |args|
-    @level < args[0]
-  end
-
-  Core::Terminal.__define_operator "level_less_or_eq", UInt32 do |args|
-    @level <= args[0]
-  end
-
-  Core::Terminal.__define_operator "level_eq", UInt32 do |args|
-    @level == args[0]
-  end
-
-  Core::Terminal.__define_operator "xp_is_max" do
-    @xp >= 1.0
+    define_runtime_call "xp_is_max" do
+      @xp >= 1.0
+    end
   end
 end

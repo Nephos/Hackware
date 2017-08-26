@@ -9,11 +9,9 @@ class Core::Model::Component
     hooks: Hash(String, Hook),
   )
 
-  Core::Terminal.__set_operators(
-    "name", "attributes", "slots"
-  )
-
-  Core::Terminal.__define_read_operators(
-    "name", "attributes", "slots"
-  )
+  RuntimeCall.extends do
+    getter_runtime_call(
+      "name", "attributes", "slots"
+    )
+  end
 end

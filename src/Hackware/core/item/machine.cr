@@ -16,19 +16,13 @@ class Core::Item::Machine < Core::ItemJSON::Machine
 
   #############################################################################
 
-  Core::Resolvable.__set_paths(
-    "owner",
-  )
+  RuntimeCall.extends do
+    getter_runtime_call(
+      "owner"
+    )
 
-  Core::Resolvable.__define_read_paths(
-    "owner"
-  )
-
-  Core::Terminal.__set_operators(
-    "name_is",
-  )
-
-  Core::Terminal.__define_operator "name_is", String do |args|
-    @name == args[0]
+    define_runtime_call "name_is", String do |args|
+      @name == args[0]
+    end
   end
 end

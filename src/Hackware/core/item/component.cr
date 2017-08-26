@@ -21,21 +21,13 @@ class Core::Item::Component < Core::ItemJSON::Component
 
   #############################################################################
 
-  Core::Resolvable.__set_paths(
-    "owner",
-  )
+  RuntimeCall.extends do
+    getter_runtime_call(
+      "owner"
+    )
 
-  Core::Resolvable.__define_read_paths(
-    "owner"
-  )
-
-  Core::Terminal.__set_operators(
-    "is_attached_to",
-  )
-
-  # arguments:
-  #   - id: UInt32
-  Core::Terminal.__define_operator "is_attached_to", String do |args|
-    @machine_name == args[0]
+    define_runtime_call "is_attached_to", String do |args|
+      @machine_name == args[0]
+    end
   end
 end

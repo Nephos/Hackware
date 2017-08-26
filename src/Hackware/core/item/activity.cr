@@ -32,19 +32,13 @@ class Core::Item::Activity < Core::ItemJSON::Activity
 
   #############################################################################
 
-  Core::Resolvable.__set_paths(
-    "owner",
-  )
+  RuntimeCall.extends do
+    getter_runtime_call(
+      "owner"
+    )
 
-  Core::Resolvable.__define_read_paths(
-    "owner"
-  )
-
-  Core::Terminal.__set_operators(
-    "is_completed",
-  )
-
-  Core::Terminal.__define_operator "is_attached_to" do
-    @completion >= 1.0
+    define_runtime_call "is_attached_to" do
+      @completion >= 1.0
+    end
   end
 end

@@ -16,3 +16,5 @@ dependencies:
   duktape:
     github: jessedoyle/duktape.cr
     version: ~> 0.11.0
+  RuntimeCall:
+    github: Nephos/RuntimeCall

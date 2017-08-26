@@ -18,29 +18,21 @@ class Core::Item::File < Core::ItemJSON::File
 
   #############################################################################
 
-  Core::Resolvable.__set_paths(
-    "owner",
-  )
+  RuntimeCall.extends do
+    getter_runtime_call(
+      "owner"
+    )
 
-  Core::Resolvable.__define_read_paths(
-    "owner"
-  )
+    define_runtime_call "executable" do
+      permissions.includes? "x"
+    end
 
-  Core::Terminal.__set_operators(
-    "is_executable",
-    "is_writable",
-    "is_readable",
-  )
+    define_runtime_call "is_writable" do
+      permissions.includes? "w"
+    end
 
-  Core::Terminal.__define_operator "executable" do
-    permissions.includes? "x"
-  end
-
-  Core::Terminal.__define_operator "is_writable" do
-    permissions.includes? "w"
-  end
-
-  Core::Terminal.__define_operator "is_readable" do
-    permissions.includes? "r"
+    define_runtime_call "is_readable" do
+      permissions.includes? "r"
+    end
   end
 end
