@@ -18,3 +18,4 @@ dependencies:
     version: ~> 0.11.0
   RuntimeCall:
     github: Nephos/RuntimeCall
+    version: ~> 0.1

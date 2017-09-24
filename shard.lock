@@ -2,7 +2,7 @@ version: 1.0
 shards:
   RuntimeCall:
     github: Nephos/RuntimeCall
-    commit: 39bed1ac3d4075576945ca5504e2163af3691a8a
+    version: 0.1
 
   duktape:
     github: jessedoyle/duktape.cr
