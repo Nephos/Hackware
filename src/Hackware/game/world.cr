@@ -6,7 +6,7 @@ class Game::World
   getter skill_list : Hash(UInt32, Core::Item::Skill)
   getter activity_list : Hash(UInt32, Core::Item::Activity)
 
-  def initialize()
+  def initialize
     @person_list = new Hash(UInt32, Owner::Person)
     @machine_list = new Hash(UInt32, Core::Item::Machine)
     @component_list = new Hash(UInt32, Core::Item::Component)

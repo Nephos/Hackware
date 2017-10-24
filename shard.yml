@@ -15,7 +15,8 @@ license: MIT
 dependencies:
   duktape:
     github: jessedoyle/duktape.cr
-    version: ~> 0.11.0
+    #version: ~> 0.11.0
+    branch: master
   RuntimeCall:
     github: Nephos/RuntimeCall
     version: ~> 0.1
