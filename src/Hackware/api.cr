@@ -1,67 +1,73 @@
-require "duktape"
-
-class Array(T)
-
-  # Build an array from the Duktape sandbox stack (arguments of js function, ...)
-  #
-  # ```
-  # data1 = Array(Int32).build(env, 0)
-  # data2 = Array(String).build(env, 1)
-  # ```
-  #
-  # TODO: add boolean
-  # TODO: test with Int64
-  # TODO: add double (number)
-  def self.build(env : Duktape::Sandbox, idx : Int32)
-    n = env.get_length idx
-    Array(T).new(n) do |index|
-      env.get_prop_index idx, index.to_u32
-      v = {% if {Int8, Int16, Int32, Int64, UInt8, UInt16, UInt32, UInt64}.includes? T %}
-            env.to_int -1
-          {% else %}
-            env.to_string -1
-          {% end %}
-      env.pop
-      v
-    end
-  end
-
-  # Push the array to the stack of Duktape sandbox (return of js function, ...)
-  #
-  # ```
-  # ["foo", "bar"].push env
-  # env.call_success
-  # ```
-  def push(env : Duktape::Sandbox)
-    arr_idx = env.push_array
-    self.each_with_index do |v, i|
-      {% if {Int8, Int16, Int32, Int64, UInt8, UInt16, UInt32, UInt64}.includes? T %}
-        env.push_int v
-      {% else %}
-        env.push_string v
-      {% end %}
-      env.put_prop_index arr_idx, i.to_u32
-    end
-  end
-end
-
-USERS = {
-  "arthur"  => [1, 2, 3],
-  "thibaut" => [4, 5, 6],
-}
-
-sbx = Duktape::Sandbox.new
-
-sbx.push_global_proc("list_machines", 2) do |ptr|
-  env = Duktape::Sandbox.new ptr
-  user = env.require_string 0
-  data = Array(Int32).build(env, 1)
-  data.push env
-  env.call_success
-end
-
-sbx.eval! "print(list_machines(\"arthur\", [1,2,3]));" # => 5
-
+# require "duktape"
+#
+# class Array(T)
+#
+#   CONVERT = {Int8: :to_i8, Int16: :to_i16, Int32: :to_i32, Int64: :to_i64, UInt8: :to_u8, UInt16: :to_u16, UInt32: :to_u32, UInt64: :to_u64, Float32: :to_f32, Float64: :to_f64, String: :to_s}
+#
+#   # Build an array from the Duktape sandbox stack (arguments of js function, ...)
+#   #
+#   # ```
+#   # data1 = Array(Int32).build(env, 0)
+#   # data2 = Array(String).build(env, 1)
+#   # ```
+#   #
+#   # TODO: add boolean
+#   # TODO: test with Int64
+#   # TODO: add double (number)
+#   def self.build(env : Duktape::Sandbox, idx : Int32)
+#     n = env.get_length idx
+#     Array(T).new(n) do |index|
+#       env.get_prop_index idx, index.to_u32
+#       v = {% if T == Int32 %}
+#             env.to_int(-1).to_i32
+#           {% elsif T == Float64 %}
+#               env.to_number(-1).to_f64
+#           {% else %}
+#             env.to_string(-1)
+#           {% end %}
+#       env.pop
+#       v
+#     end
+#   end
+#
+#   # Push the array to the stack of Duktape sandbox (return of js function, ...)
+#   #
+#   # ```
+#   # ["foo", "bar"].push env
+#   # env.call_success
+#   # ```
+#   def push(env : Duktape::Sandbox)
+#     arr_idx = env.push_array
+#     self.each_with_index do |v, i|
+#       {% if {Int8, Int16, Int32, Int64, UInt8, UInt16, UInt32, UInt64}.includes? T %}
+#         env.push_int v
+#       {% elsif {Float32, Float64}.includes? T %}
+#         env.push_number v
+#       {% else %}
+#         env.push_string v.to_s
+#       {% end %}
+#       env.put_prop_index arr_idx, i.to_u32
+#     end
+#   end
+# end
+#
+# USERS = {
+#   "arthur"  => [1, 2, 3],
+#   "thibaut" => [4, 5, 6.0],
+# }
+#
+# sbx = Duktape::Sandbox.new
+#
+# sbx.push_global_proc("list_machines", 2) do |ptr|
+#   env = Duktape::Sandbox.new ptr
+#   user = env.require_string 0
+#   data = Array(Float64).build(env, 1)
+#   data.push env
+#   env.call_success
+# end
+#
+# sbx.eval! "print(list_machines(\"arthur\", [1,2,3.1]));" # => 5
+#
 # sbx.push_global_proc("list_machines", 1) do |ptr|
 #  env = Duktape::Sandbox.new ptr
 #
