@@ -6,11 +6,14 @@ require "./core"
 # Owner of items
 require "./owner"
 
-# Game handler
-require "./game"
-
 # Loader of mods
 require "./mods"
+
+# Mods' api
+require "./api"
+
+# Game handler
+require "./game"
 
 # Network and server
 require "./network"

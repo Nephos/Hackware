@@ -3,8 +3,8 @@ require "./models"
 
 class Mods::Loader
   property base_directory : String
-  @sandbox : Mods::Sandbox
-  @models : Mods::Models
+  getter sandbox : Mods::Sandbox
+  getter models : Mods::Models
 
   def initialize(@base_directory = "./mods",
                  @sandbox = Mods::Sandbox.new,
@@ -55,17 +55,17 @@ class Mods::Loader
 
   # Load all the object mods enabled.
   def load_objects
-    raise "object list does not exits at #{object_mods_list}" unless File.exists?(object_mods_list)
+    raise "object list does not exits at `#{object_mods_list}`" unless File.exists?(object_mods_list)
     list = File.read(object_mods_list).split("\n")
-    list.each { |mod| "Mod #{mod} does not exists" unless object_mod_exists?(object_mods) }
+    list.each { |mod| "Mod `#{mod}` does not exists" unless object_mod_exists?(object_mods) }
     list.each { |mod| _load_object object_mods }
   end
 
   # Load all the script mods enabled.
   def load_scripts
-    raise "script list does not exits at #{script_mods_list}" unless File.exists?(script_mods_list)
+    raise "script list does not exits at `#{script_mods_list}`" unless File.exists?(script_mods_list)
     list = File.read(script_mods_list).split("\n")
-    list.each { |mod| "Mod #{mod} does not exists" unless script_mod_exists?(script_mods) }
+    list.each { |mod| "Mod `#{mod}` does not exists" unless script_mod_exists?(script_mods) }
     list.each { |mod| _load_script script_mods }
   end
 

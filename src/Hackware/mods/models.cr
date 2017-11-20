@@ -27,7 +27,7 @@ class Mods::Models
   # then load the json into a list of models.
   def load(path : String)
     path = File.expand_path(path)
-    raise "No such file (#{path})" unless File.exists? path
+    raise "No such file `#{path}`" unless File.exists? path
     @list << path
     _load_json_at_path(path)
   end
@@ -36,7 +36,7 @@ class Mods::Models
   private def _load_json_at_path(path : String)
     mod_code = File.read(path)
     mod_name = File.basename(path).split(".").first
-    raise "Invalid Mod file name (#{mod_name})" unless mod_name =~ /^[a-zA-Z][a-zA-Z0-9_-]*$/
+    raise "Invalid Mod file name `#{mod_name}`" unless mod_name =~ /^[a-zA-Z][a-zA-Z0-9_-]*$/
 
     objects = ModObject.from_json mod_code
 
