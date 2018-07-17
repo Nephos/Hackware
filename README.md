@@ -4,7 +4,7 @@ TODO: Write a description here
 
 ## Github informations
 
-We prefer to work on our private server <https://git.nephos.xyz/Hackware/Hackware>.
+We prefer to work on our private server <https://git.sceptique.eu/Hackware/Hackware>.
 Much like github, free registration, etc.
 Still, you can also open a issue / pull request on github, but it might be slower to process.
 
@@ -20,7 +20,7 @@ TODO: Write usage instructions here
 
 Are you a modder ? You may want to read the wiki.  
 Are you a developer ? You might also want to do so.  
-The wiki is available at this address: <https://git.nephos.xyz/Hackware/Hackware/wiki>
+The wiki is available at this address: <https://git.sceptique.eu/Hackware/Hackware/wiki>
 
 ## Contributing
 
