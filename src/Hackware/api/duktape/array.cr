@@ -10,7 +10,7 @@ class Array::DuktapeBuild
     is_null: -> (env : Duktape::Sandbox, index : Int32) { nil },
     is_boolean: -> (env : Duktape::Sandbox, index : Int32) { env.get_boolean(index) },
     is_array: -> (env : Duktape::Sandbox, index : Int32) {
-      DuktapeBuild.build(env, index)
+      Array::DuktapeBuild.build(env, index)
     },
     is_object: -> (env : Duktape::Sandbox, index : Int32) { nil },
   }
