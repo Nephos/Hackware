@@ -57,8 +57,13 @@ require "./api/*"
 #   "arthur"  => [1, 2, 3],
 #   "thibaut" => [4, 5, 6.0],
 # }
-#
 # sbx = Duktape::Sandbox.new
+#
+# idx = sbx.push_object
+# sbx.push_string "HackwareString"
+# sbx.put_prop_string idx, "HackwareKey"
+# sbx.put_global_string "Hackware"
+# sbx.eval "print(Hackware.HackwareKey)"
 #
 # sbx.push_global_proc("list_machines", 2) do |ptr|
 #   env = Duktape::Sandbox.new ptr
