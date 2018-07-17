@@ -61,7 +61,11 @@ require "./api/*"
 #
 # sbx << [1, 2]
 # sbx.put_global_string "my_array"
-# sbx.eval "print(my_array)"
+# sbx.eval "print(JSON.stringify(my_array))"
+#
+# sbx << {"a" => 1}
+# sbx.put_global_string "my_object"
+# sbx.eval "print(JSON.stringify(my_object))"
 #
 # idx = sbx.push_object
 # sbx.push_string "HackwareString"
