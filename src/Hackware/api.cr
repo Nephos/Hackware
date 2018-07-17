@@ -57,15 +57,14 @@ require "./api/*"
 #   "arthur"  => [1, 2, 3],
 #   "thibaut" => [4, 5, 6.0],
 # }
+
 # sbx = Duktape::Sandbox.new
+# sbx << [777, "4.0", [666], "ok"]
+# data = Array(String|Int32|Array(Int32|Nil)|Nil).build(sbx, 0)
+# puts data
+
 #
 # sbx << [1, 2]
-# sbx.put_global_string "my_array"
-# sbx.eval "print(JSON.stringify(my_array))"
-#
-# sbx << {"a" => 1}
-# sbx.put_global_string "my_object"
-# sbx.eval "print(JSON.stringify(my_object))"
 #
 # idx = sbx.push_object
 # sbx.push_string "HackwareString"
