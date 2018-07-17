@@ -36,29 +36,14 @@ class Array(T)
       current_value
     end
   end
+end
 
-  # Push the array to the stack of Duktape sandbox (return of js function, ...)
-  #
-  # ```
-  # ["foo", "bar"].push env
-  # env.call_success
-  # ```
-  def push(env : Duktape::Sandbox)
-    # initialize the array
-    array_ptr = env.push_array
-
-    # for each element of the array, push the value
-    self.each_with_index do |value, idx|
-      {% if {Int8, Int16, Int32, Int64, UInt8, UInt16, UInt32, UInt64}.includes? T %}
-        env.push_int value
-      {% elsif {Float32, Float64}.includes? T %}
-        env.push_number value
-      {% else %}
-        env.push_string value.to_s
-      {% end %}
-
-      # for the current element, set the index
-      env.put_prop_index array_ptr, idx.to_u32
+module Duktape::API::Push
+  def <<(array : Array)
+    array_ptr = self.push_array
+    array.each_with_index do |value, idx|
+      self << value
+      self.put_prop_index array_ptr, idx.to_u32
     end
   end
 end

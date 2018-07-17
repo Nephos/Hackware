@@ -59,6 +59,10 @@ require "./api/*"
 # }
 # sbx = Duktape::Sandbox.new
 #
+# sbx << [1, 2]
+# sbx.put_global_string "my_array"
+# sbx.eval "print(my_array)"
+#
 # idx = sbx.push_object
 # sbx.push_string "HackwareString"
 # sbx.put_prop_string idx, "HackwareKey"
