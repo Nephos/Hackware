@@ -5,7 +5,7 @@ class Core::Model::Machine
   JSON.mapping(
     name: String,
     type: String,
-    slots: Array(String),
+    slots: Hash(String, UInt32),
     attributes: Hash(String, Float64),
   )
 
