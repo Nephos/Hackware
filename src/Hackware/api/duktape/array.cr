@@ -1,47 +1,6 @@
 require "duktape"
 
-class Array::DuktapeBuild
-  BUILD = {
-    is_number: -> (env : Duktape::Sandbox, index : Int32) {
-      value = env.get_number(index)
-      value.round == value ? value.to_i32 : value
-    },
-    is_string: -> (env : Duktape::Sandbox, index : Int32) { env.get_string(index) },
-    is_null: -> (env : Duktape::Sandbox, index : Int32) { nil },
-    is_boolean: -> (env : Duktape::Sandbox, index : Int32) { env.get_boolean(index) },
-    is_array: -> (env : Duktape::Sandbox, index : Int32) {
-      Array::DuktapeBuild.build(env, index)
-    },
-    is_object: -> (env : Duktape::Sandbox, index : Int32) { nil },
-  }
-
-  alias Any = Nil | Bool | String | Int::Signed | Int::Unsigned | Float64 | Float32 | Array(Any) | Hash(String, Any)
-
-  def self.cast_to_any(x :  Array)
-    return x.map { |e| cast_to_any(e).as(Any) }.as(Any)
-  end
-
-  def self.cast_to_any(x : Hash)
-    h = Hash(String, Any).new
-    x.each do |(k, v)|
-      h[k] = cast_to_any(v).as(Any)
-    end
-    h.as(Any)
-  end
-
-  def self.cast_to_any(x)
-    x.as(Any)
-  end
-
-  def self.get_current_value(env)
-    {% for type_check, type_get in BUILD %}
-      should_get_value = env.{{ type_check }}(-1)
-      if should_get_value
-        return ({{ type_get }}).call(env, -1)
-      end
-    {% end %}
-    raise "Value not found"
-  end
+class DuktapeBuild::Array
 
   # Build an array from the Duktape sandbox stack (arguments of js function, ...)
   #
@@ -54,11 +13,11 @@ class Array::DuktapeBuild
   def self.build(env : Duktape::Sandbox, idx : Int32 = 0)
     array_length = env.get_length idx
 
-    Array(Any).new(array_length) do |array_idx|
+    ::Array(Any).new(array_length) do |array_idx|
       env.get_prop_index idx, array_idx.to_u32
       begin
-        current_value = get_current_value(env)
-        cast_to_any(current_value)
+        current_value = DuktapeBuild.get_current_value(env, -1)
+        DuktapeBuild.cast_to_any(current_value)
       ensure
         env.pop
       end

@@ -59,8 +59,13 @@ require "./api/*"
 # }
 
 # sbx = Duktape::Sandbox.new
-# sbx << [777, "4.0", [[[[[666]]]]], "ok"]
-# data = Array::DuktapeBuild.build(sbx, 0)
+#
+# sbx << [777, "4.0", [666], "ok"]
+# data = DuktapeBuild::Array.build(sbx, 0)
+# puts data
+#
+# sbx << { "key1" => "data", "key2" => "data2" }
+# data = DuktapeBuild::Hash.build(sbx, 0)
 # puts data
 
 #
