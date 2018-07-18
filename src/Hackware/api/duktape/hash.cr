@@ -14,11 +14,11 @@ class DuktapeBuild::Hash
     env.enum idx, 0
     collect = ::Hash(String, Any).new
     while current_idx = env.next -1, true
-      current_key = env.get_string -2
-      current_value = DuktapeBuild.get_current_value(env, -1)
-      raise "Invalid key" if current_key.nil?
-      collect[current_key] = current_value
       begin
+        current_key = env.get_string -2
+        current_value = DuktapeBuild.get_current_value(env, -1)
+        raise "Invalid key" if current_key.nil?
+        collect[current_key] = current_value
         DuktapeBuild.cast_to_any(current_value)
       ensure
         env.pop_2
