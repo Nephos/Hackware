@@ -1,3 +1,5 @@
+require "./duktape/any"
+require "./duktape/cast"
 require "./duktape/build"
 require "./duktape/array"
 require "./duktape/hash"

@@ -1,6 +1,7 @@
 require "duktape"
 
 class DuktapeBuild::Hash
+  extend DuktapeBuild::Cast
 
   # Build an array from the Duktape sandbox stack (arguments of js function, ...)
   #
@@ -16,10 +17,10 @@ class DuktapeBuild::Hash
     while current_idx = env.next -1, true
       begin
         current_key = env.get_string -2
-        current_value = DuktapeBuild.get_current_value(env, -1)
+        current_value = get_current_value(env, -1)
         raise "Invalid key" if current_key.nil?
         collect[current_key] = current_value
-        DuktapeBuild.cast_to_any(current_value)
+        cast_to_any(current_value)
       ensure
         env.pop_2
       end

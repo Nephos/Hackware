@@ -58,15 +58,22 @@ require "./api/*"
 #   "thibaut" => [4, 5, 6.0],
 # }
 
-# sbx = Duktape::Sandbox.new
-#
-# sbx << [777, "4.0", [666], "ok"]
-# data = DuktapeBuild::Array.build(sbx, 0)
-# puts data
-#
-# sbx << { "key1" => "data", "key2" => "data2" }
-# data = DuktapeBuild::Hash.build(sbx, 0)
-# puts data
+sbx = Duktape::Sandbox.new
+
+sbx << [777, "4.0", [666], "ok"]
+data = DuktapeBuild::Array.build(sbx, 0)
+puts data
+
+sbx << { "key1" => "data", "key2" => "data2" }
+data = DuktapeBuild::Hash.build(sbx, 0)
+puts data
+
+ApiBuild.create_function(sbx, "my_function", :name, :age) do |ctx, args|
+  # create_function is a macro, so ctx and args are macro arguments
+  puts "=>", {{ctx}}, {{args}}
+end
+sbx.eval "print(my_function)"
+sbx.eval "print(my_function(\"a\", 1))"
 
 #
 # sbx << [1, 2]
@@ -80,13 +87,12 @@ require "./api/*"
 # sbx.push_global_proc("list_machines", 2) do |ptr|
 #   env = Duktape::Sandbox.new ptr
 #   user = env.require_string 0
-#   data = Array(Float64).build(env, 1)
-#   data.push env
+#   env << [1, 2, 3]
 #   env.call_success
 # end
 #
 # sbx.eval! "print(list_machines(\"arthur\", [1,2,3.1]));" # => 5
-#
+# #
 # sbx.push_global_proc("list_machines", 1) do |ptr|
 #  env = Duktape::Sandbox.new ptr
 #

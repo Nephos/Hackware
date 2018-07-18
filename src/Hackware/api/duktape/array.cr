@@ -1,6 +1,7 @@
 require "duktape"
 
 class DuktapeBuild::Array
+  extend DuktapeBuild::Cast
 
   # Build an array from the Duktape sandbox stack (arguments of js function, ...)
   #
@@ -16,8 +17,8 @@ class DuktapeBuild::Array
     ::Array(Any).new(array_length) do |array_idx|
       env.get_prop_index idx, array_idx.to_u32
       begin
-        current_value = DuktapeBuild.get_current_value(env, -1)
-        DuktapeBuild.cast_to_any(current_value)
+        current_value = get_current_value(env, -1)
+        cast_to_any(current_value)
       ensure
         env.pop
       end
