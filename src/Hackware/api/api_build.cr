@@ -22,7 +22,6 @@ module ApiBuild
       {{yield context, js_args}}
       context.call_success
     end
-    0
   end
 
   extend self

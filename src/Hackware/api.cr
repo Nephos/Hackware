@@ -68,9 +68,12 @@ sbx << { "key1" => "data", "key2" => "data2" }
 data = DuktapeBuild::Hash.build(sbx, 0)
 puts data
 
+MY_DATA = { "a" => "Bonjour"}
+
 ApiBuild.create_function(sbx, "my_function", :name, :age) do |ctx, args|
   # create_function is a macro, so ctx and args are macro arguments
   puts "=>", {{ctx}}, {{args}}
+  puts MY_DATA["a"]
 end
 sbx.eval "print(my_function)"
 sbx.eval "print(my_function(\"a\", 1))"
@@ -84,11 +87,12 @@ sbx.eval "print(my_function(\"a\", 1))"
 # sbx.put_global_string "Hackware"
 # sbx.eval "print(Hackware.HackwareKey)"
 #
+# VARIABLE = [1,2,3]
 # sbx.push_global_proc("list_machines", 2) do |ptr|
-#   env = Duktape::Sandbox.new ptr
-#   user = env.require_string 0
-#   env << [1, 2, 3]
-#   env.call_success
+#  env = Duktape::Sandbox.new ptr
+#  user = env.require_string 0
+#  env << VARIABLE
+#  env.call_success
 # end
 #
 # sbx.eval! "print(list_machines(\"arthur\", [1,2,3.1]));" # => 5
