@@ -58,25 +58,26 @@ require "./api/*"
 #   "thibaut" => [4, 5, 6.0],
 # }
 
-sbx = Duktape::Sandbox.new
-
-sbx << [777, "4.0", [666], "ok"]
-data = DuktapeBuild::Array.build(sbx, 0)
-puts data
-
-sbx << { "key1" => "data", "key2" => "data2" }
-data = DuktapeBuild::Hash.build(sbx, 0)
-puts data
-
-MY_DATA = { "a" => "Bonjour"}
-
-ApiBuild.create_function(sbx, "my_function", :name, :age) do |ctx, args|
-  # create_function is a macro, so ctx and args are macro arguments
-  puts "=>", {{ctx}}, {{args}}
-  puts MY_DATA["a"]
-end
-sbx.eval "print(my_function)"
-sbx.eval "print(my_function(\"a\", 1))"
+# sbx = Duktape::Sandbox.new
+#
+# sbx << [777, "4.0", [666], "ok"]
+# data = DuktapeBuild::Array.build(sbx, 0)
+# puts data
+#
+# sbx << { "key1" => "data", "key2" => "data2" }
+# data = DuktapeBuild::Hash.build(sbx, 0)
+# puts data
+#
+# MY_DATA = { "a" => "Bonjour"}
+# my_data = MY_DATA
+#
+# ApiBuild.create_function(sbx, "my_function", :name, :age) do |ctx, args|
+#   # create_function is a macro, so ctx and args are macro arguments
+#   puts "=>", {{ctx}}, {{args}}
+#   puts MY_DATA["a"]
+# end
+# sbx.eval "print(my_function)"
+# sbx.eval "print(my_function(\"a\", 1))"
 
 #
 # sbx << [1, 2]

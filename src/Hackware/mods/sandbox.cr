@@ -5,11 +5,13 @@ require "duktape/runtime"
 # It loads the scripts into a sandbox.
 class Mods::Sandbox
   getter list : Array(String)
-  getter sandbox : Duktape::Runtime
+  getter js : Duktape::Runtime
+  getter js_context : Duktape::Sandbox
 
   def initialize
     @list = Array(String).new
-    @sandbox = Duktape::Runtime.new
+    @js_context = Duktape::Sandbox.new
+    @js = Duktape::Runtime.new @js_context
   end
 
   # Load a new mod.
@@ -29,7 +31,7 @@ class Mods::Sandbox
     raise "Invalid Mod file name `#{mod_name}`" unless mod_name =~ /^[a-zA-Z][a-zA-Z0-9_-]*$/
     mod_code = "var #{mod_name} = #{mod_code}"
     begin
-      @sandbox.eval mod_code
+      @js.eval mod_code
     rescue err
       STDERR.puts "Invalid mod_code `#{mod_name}`"
       raise err

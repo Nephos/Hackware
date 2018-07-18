@@ -12,7 +12,12 @@ module ApiBuild
       values = Array(DuktapeBuild::Any).new({{args.size}})  do |idx|
         DuktapeBuild::Cast.get_current_value(context, idx)
       end
-      keys = {{args}}.map(&.to_s).to_a
+
+      keys = {% if args.size > 0 %}
+        {{args}}.map(&.to_s).to_a
+      {% else %}
+        Array(String).new
+      {% end %}
 
       js_args = Hash.zip(keys, values)
 
